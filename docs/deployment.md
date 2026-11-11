@@ -1,34 +1,29 @@
-# Cloudflare Pages 部署与发布
+# GitHub 分发与更新
 
-## GitHub 源码仓库
+团队入口为 [team-script-hub 仓库首页](https://github.com/lucasshare/team-script-hub)。按用户最新决定，这个仓库用于公开分发，不部署 Cloudflare Pages 或独立网站；原业务开发源码仓库不改变可见性。
 
-源码已保存在个人私有仓库 [lucasshare/team-script-hub](https://github.com/lucasshare/team-script-hub)，产品名称为“团队共享脚本中心”，默认分支为 `main`。仅 Lucas 管理，不邀请协作者。本项目的 GitHub Actions 仅验证文件，不会自动发布网站，也不影响其他项目。
+## 文件关系
 
-## 首次部署
+- `catalog.json`：管理员维护的共享清单，精确选择源文件与版本，并记录原身份、使用说明和 SHA-256。
+- `userscripts/`：按原字节保存选定版本的源文件，保留历史版本用于回退。
+- `scripts/`：生成的稳定分发文件，每项含 `.user.js` 和仅有元信息的 `.meta.js`。
+- `README.md`：从同一清单生成的首页表格，列出平台、名称、用途、注意、版本及安装链接。
+- `scripts.json`：由同一清单生成的机器可读目录，不含本地路径或源文件指纹。
 
-1. 登录 Cloudflare，进入 Workers & Pages，创建 **Pages** 项目并连接 GitHub。不是创建需要付费的服务器。
-2. 选择刚才的私有仓库。若尚未授权 GitHub 集成，需要由账号所有者完成授权；权限仅选择这个仓库。
-3. 项目名称可选 `team-script-hub`，以控制台最终接受的名称为准。记录实际分配的正式 `pages.dev` 地址。
-4. 框架选 None，生产分支为 `main`，构建命令为 `npm run build`，构建输出为 `dist`，根目录保持仓库根。
-5. 设置公开构建变量 `SITE_URL` 为第 3 步的实际正式 HTTPS 地址，`NODE_VERSION` 为 `22`。若预览部署也启用，同样设置正式 `SITE_URL`。
-6. 部署，等待成功，再逐一打开首页、`scripts.json`、`scripts/install-check.meta.js` 和 `scripts/install-check.user.js`。
-7. 核对元信息的两个更新地址都使用正式域名，没有 `127.0.0.1`、占位符或某次预览部署的地址。
-8. 用装有油猴的浏览器从首页安装示例，进入 `https://example.com/` 验证运行提示，再在油猴面板主动检查更新。
+安装及更新地址固定为 `https://raw.githubusercontent.com/lucasshare/team-script-hub/main/scripts/<ID>.user.js` 和对应的 `.meta.js`。不使用私有仓库的临时签名链接，不改变每个脚本的原名称、命名空间、权限或业务正文。
 
-Cloudflare 授权、正式域名和生产发布必须单独回读记录；没有实际成功结果前，不记作已上线。如果控制台尚不能提供正式域名，可先选定可用的 Pages 项目名，在部署设置中填入对应域名；首次部署后立即核对实际分配结果，不一致则修正变量后重建。
+## 发布步骤
 
-## 日常发布
+1. 核对所选脚本的用途、版本、共享范围与内容，排除凭据、运行存储和业务导出文件。
+2. 将原源文件保存到带版本号的目录文件，保留旧版；更新清单及 SHA-256。
+3. 运行 `npm test`、`npm run build`、`npm run check`，检查生成的首页及分发文件。
+4. 核对暂存范围并用中文提交，按用户授权推送 `main`。生成的 `scripts/`、`scripts.json` 和 README 必须一同提交。
+5. 回读公开可见性、远端提交及首页；逐项匿名读取安装/更新文件，确认版本、身份和更新地址与清单一致，并检查 GitHub 自动检查结果。
 
-管理员添加新版本文件并更新清单，先 `npm test`，再检查公开构建输出。获得所需的提交/推送授权后推送 `main`，由 Pages Git 集成触发部署。GitHub 检查与 Pages 构建是独立的任务，发布人应同时确认两者成功。
+无需 `SITE_URL`、Cloudflare 账号、独立网站或服务器。仓库内保留的旧网页草案不作为入口，也不参与发布输出。
 
-每次发布后回读实际 `.meta.js` / `.user.js` 的版本和域名，再向团队分发首页链接。更换域名会影响已安装脚本的更新地址，不能只修改新站链接；应保留旧地址并先从旧地址发布指向新域名的升级版。
+## 已安装脚本
 
-## 接入真实业务脚本
+接入共享中心时维持原版本号。已有同版本旧安装需要从首页手动安装一次，才能采用新的更新地址；以后发布更高 `@version`，油猴按用户更新设置检查。出现故障时，将可用逻辑发布为更高版本的修复版，不能假定降低版本号会让所有客户端回退。
 
-先逐个核对用途、适用站点、当前可用版本和公开范围。移除密钥、固定店铺资料和调试数据后，保持原脚本名称及命名空间，检查旧安装能否作为同一脚本升级。首版构建只接受当前项目的命名空间；若接入旧脚本，需要明确保留旧身份的方案并扩展校验，不能直接改名导致重复安装。
-
-## 故障恢复
-
-网页故障可通过 Pages 选择已确认可用的旧部署恢复。脚本已升级到员工电脑后，网站回滚不会保证油猴降级；应将可用逻辑发布为更高版本号，重新验证再分发。历史源文件保留在私有 GitHub，公网只保留清单选中的版本。
-
-官方依据：[Pages Git 集成](https://developers.cloudflare.com/pages/configuration/git-integration/)、[构建配置](https://developers.cloudflare.com/pages/configuration/build-configuration/)、[Tampermonkey 元信息](https://www.tampermonkey.net/documentation.php?locale=zh)。
+面单六步配套关系和当前共享清单见 [已接入脚本](shared-scripts.md)。当前分发检查与同事真实运行验收分别记录。

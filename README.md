@@ -1,56 +1,58 @@
 # 团队共享脚本中心
 
-为同事提供跨平台的油猴脚本共享入口，支持平台筛选、用途分类、搜索、安装和使用说明。Lucas 在 GitHub 私有仓库 [team-script-hub](https://github.com/lucasshare/team-script-hub) 管理发布；同事通过 Cloudflare Pages 公网地址安装，无需注册。首页明确展示“团队共享”标识。
+团队共享的油猴脚本库。打开本页查看用途，点击“安装脚本”，在 Tampermonkey 页面确认安装。无需单独的网站或 GitHub 登录。
 
-脚本库覆盖各业务平台和通用工具，平台选项从已发布脚本动态生成，一个脚本可归属多个平台。首版只提供一个**安装验证脚本**，运行于 `https://example.com/`，不会执行业务操作。现有业务源码仓库保持独立，只有经过检查并加入发布清单的脚本才会公开。
+当前收录 **10 个业务脚本**，均为已确认共享的最新版；另提供安装验证示例。由 Lucas 统一维护，后续更新使用固定地址。
 
-## 本地运行
+## 先安装油猴
 
-依赖 Node.js 22，无需安装第三方包，Mac / Windows 使用相同命令。
+从 [Tampermonkey 官网](https://www.tampermonkey.net/)选择浏览器并安装扩展。如果安装链接只显示代码，请确认油猴已启用，或复制该链接到油猴管理面板“实用工具”的 URL 安装入口。
+
+## OMS / TEMU 面单工作流
+
+以下 **6 个脚本需分别安装**。按“库存查询 → 订单采集 → 填仓 → 下载面单 → 按需删除旧面单 → 上传新面单”配套使用。库存查询和采集器使用同一浏览器配置；先核对本批任务，再进入后续步骤。签名、物流渠道和最终下单仍由人工处理。
+
+| 平台 | 脚本名称 | 用途 | 使用注意 | 当前版本 | 安装链接 |
+| --- | --- | --- | --- | --- | --- |
+| OMS | OMS ERP 共享库存按仓库明细查询 | 按自定义 SKU 查询各仓库存，依据仓库优先级和库存阈值生成推荐仓库。 | 面单第 1 步。先导入仓库优先级 CSV；与采集器使用同一浏览器配置。 | v1.1.0 | [安装脚本](https://raw.githubusercontent.com/lucasshare/team-script-hub/main/scripts/oms-erp-shared-inventory-by-warehouse.user.js) |
+| OMS | 致远ERP 订单采集器 | 采集当前订单、填充面板中的空仓库，并把选中订单设为本批 TEMU 任务。 | 面单第 2 步。核对订单和仓库后建立本批任务；数据变化后重新建立。 | v2.8 | [安装脚本](https://raw.githubusercontent.com/lucasshare/team-script-hub/main/scripts/zhiyuan-erp-order-collector.user.js) |
+| OMS、TEMU | Temu 仓库自动填充 | 接收 OMS 批次，查询对应订单，并在普通下单或补发货页面填写尺寸与仓库。 | 面单第 3 步。需商品尺寸表；签名、渠道和最终下单由人工处理。 | v3.20 | [安装脚本](https://raw.githubusercontent.com/lucasshare/team-script-hub/main/scripts/temu-warehouse-auto-fill.user.js) |
+| OMS、TEMU | Temu 面单批量下载 | 接收当前 OMS 批次，按所选店铺下载普通或补寄物流面单。 | 面单第 4 步。先建立本批任务；普通与补寄面单使用各自页面。 | v1.5.6 | [安装脚本](https://raw.githubusercontent.com/lucasshare/team-script-hub/main/scripts/temu-waybill-batch-download.user.js) |
+| OMS | OMS ERP面单一键批量删除 | 预览订单关联附件，按明确选择逐项删除并回读结果。 | 面单第 5 步。仅在确需替换旧面单时使用；先核对附件预览。 | v1.8 | [安装脚本](https://raw.githubusercontent.com/lucasshare/team-script-hub/main/scripts/oms-erp-waybill-bulk-delete.user.js) |
+| OMS | ZhiyuanSys ERP · 订单附件批量自动上传 | 按平台订单号、渠道 SKU 和跟踪号精确匹配本地 PDF，批量上传订单面单。 | 面单第 6 步。先核对 PDF 文件名和预扫匹配，再执行上传。 | v0.2.6 | [安装脚本](https://raw.githubusercontent.com/lucasshare/team-script-hub/main/scripts/zhiyuansys-erp-order-attachment-upload.user.js) |
+
+仓库优先级 CSV、商品尺寸表及 SKU 映射表按实际业务准备，详见 [配套使用说明](docs/shared-scripts.md)。
+
+## 其他共享工具
+
+| 平台 | 脚本名称 | 用途 | 使用注意 | 当前版本 | 安装链接 |
+| --- | --- | --- | --- | --- | --- |
+| TEMU | Temu 调价单一键拒绝助手 | 按当前账号选择的店铺批量拒绝待卖家确认的调价单。 | 先选择店铺并核对待确认调价单，再执行拒绝。 | v0.1.1 | [安装脚本](https://raw.githubusercontent.com/lucasshare/team-script-hub/main/scripts/temu-price-adjust-reject.user.js) |
+| 致远 BI | 致远BI TEMU利润率价格导出 | 保留 BI 售价参考页的全部字段，并按所选利润率范围导出价格表。 | 需登录 BI 并有报表权限；先设置利润率范围。 | v0.1.1 | [安装脚本](https://raw.githubusercontent.com/lucasshare/team-script-hub/main/scripts/bi-temu-profit-price-export.user.js) |
+| 产品中心、OMS、商品运营工作台 | 致远ERP同步到TEMU Copilot自建版 | 同步或导出 ERP 销量月报，并向自建工作台补充 SHEIN 负责人。 | 需能访问原自建工作台；本项为自建版。 | v0.3.5 | [安装脚本](https://raw.githubusercontent.com/lucasshare/team-script-hub/main/scripts/erp-sales-sync-selfhost.user.js) |
+| TEMU | Temu 活动采集与精确退出 | 采集活动列表、邀约、报名明细，并按 CSV 精确核对或退出指定活动。 | 先选择店铺、活动和站点；精确退出默认试跑。 | v0.1.23 | [安装脚本](https://raw.githubusercontent.com/lucasshare/team-script-hub/main/scripts/temu-marketing-invite-detail-export.user.js) |
+
+## 安装验证
+
+| 平台 | 脚本名称 | 用途 | 使用注意 | 当前版本 | 安装链接 |
+| --- | --- | --- | --- | --- | --- |
+| 通用 | 团队脚本安装验证 | 第一次使用时，确认油猴已经安装并允许脚本运行。 | 安装后打开 example.com，查看运行成功提示。 | v1.0.0 | [安装脚本](https://raw.githubusercontent.com/lucasshare/team-script-hub/main/scripts/install-check.user.js) |
+
+## 安装与更新
+
+- 每个脚本独立安装，名称和命名空间沿用原脚本，权限及业务逻辑保持原样。
+- 已安装同版本旧脚本时，从本页手动安装一次以采用共享更新地址；后续由油猴按设置检查更高版本。更新不是实时强制推送。
+- 在对应平台登录并具有业务权限后使用。ERP 同步自建版还需要能访问原有工作台服务。
+- 这里提供已确认的脚本文件和说明。发布检查不等于已在每位同事的账号或 Windows 环境完成业务运行验收。
+
+## 管理与发布
+
+源码原文件在 `userscripts/`，发布清单在 `catalog.json`；本页目录、`scripts/` 中的安装/更新文件和 `scripts.json` 由工具生成。
 
 ```sh
 npm test
-npm run build:local
-npm run preview
+npm run build
+npm run check
 ```
 
-打开 `http://127.0.0.1:4173`。本地构建使用本机更新地址，仅供检查；正式安装应使用部署后的 HTTPS 链接。
-
-## 构建与部署
-
-在 Cloudflare Pages 连接本 GitHub 私有仓库，选择 `main` 分支，构建命令 `npm run build`，输出目录 `dist`。在 Pages 的构建环境变量中设置 `SITE_URL` 为实际正式地址，且不带路径，例如项目提供的 `pages.dev` 域名。它是公开地址，不是密钥。
-
-正式构建必须提供 `SITE_URL`；未设置时会停止，避免发布错误的更新地址。Cloudflare 的预览部署也沿用这个正式地址，以免已安装脚本跟随临时预览域名。
-
-详细操作见 [部署说明](docs/deployment.md)。GitHub 保存源码不会自动生成公网安装地址，必须完成 Pages 部署。
-
-## 发布脚本
-
-1. 将审核后的脚本放入 `userscripts/<英文ID>/<ID>.v版本号.user.js`，保留历史版本。
-2. 在 `catalog.json` 添加名称、所属平台 `platforms`、用途分类 `category`、适用页面、版本及发布说明，`file` 指向这次发布的精确文件。平台名称按实际工具填写，不固定为某个平台。
-3. 源文件使用 `__PUBLIC_ORIGIN__` 作为 `@updateURL` / `@downloadURL` 的域名，由构建程序替换；命名空间与脚本名称保持稳定。
-4. 运行测试，核对构建结果，使用中文提交说明，再发布到 `main`。
-
-发布文件使用稳定路径 `scripts/<ID>.user.js` 和 `scripts/<ID>.meta.js`；升级时不改变路径，只提高 `@version`。油猴按用户设置检查更新，不保证实时推送。出现问题时，以更高版本号发布修复版；直接降低版本号不能保证客户端回退。
-
-## 权限与边界
-
-- 管理权限由 GitHub 仓库控制，首版不添加协作者、账号系统或网站上传入口。
-- `dist/` 中的脚本可被任何拿到链接的人下载、复制和运行，私有源码仓库不代表公开脚本保密。
-- 不发布凭据、浏览器存储、店铺资料和业务导出文件。仓库文档和历史版本不进入 `dist/`。
-- `catalog.json`、油猴元信息和文件版本必须一致，构建时校验。该校验不代替上线前对脚本内容的人工检查。
-
-## 目录
-
-| 路径 | 用途 |
-| --- | --- |
-| `web/` | 静态首页、样式及搜索逻辑 |
-| `userscripts/` | 按版本保留的源脚本 |
-| `catalog.json` | 明确允许公开的脚本清单 |
-| `tools/` | 构建、验证及本地预览，无第三方依赖 |
-| `.github/workflows/check.yml` | GitHub 上的自动检查，不执行部署 |
-| `docs/PRD.md` | 首版范围及验收要求 |
-| `docs/DEVELOPMENT_LOG.md` | 工作记录、验证结果与未完成事项 |
-| `PROJECT_MEMORY.md` | 后续对话需要延续的长期决定 |
-
-技术依据：[Cloudflare Git 集成](https://developers.cloudflare.com/pages/configuration/git-integration/)、[油猴元信息说明](https://www.tampermonkey.net/documentation.php?locale=zh)。
+新增或升级时保留旧版源文件，更新清单，运行检查，再提交和推送。不要直接修改生成的脚本文件或首页表格。详细规则见 [AGENTS.md](AGENTS.md) 和 [分发说明](docs/deployment.md)。历史网页草案仅留存，不作为使用入口，也不构建或部署独立网站。

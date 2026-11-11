@@ -1,0 +1,268 @@
+[
+  {
+    "id": "oms-erp-shared-inventory-by-warehouse",
+    "name": "OMS ERP 共享库存按仓库明细查询",
+    "namespace": "https://oms.zhiyuansys.com/",
+    "version": "1.1.0",
+    "platforms": [
+      "OMS"
+    ],
+    "category": "面单工作流",
+    "description": "按自定义 SKU 查询各仓库存，依据仓库优先级和库存阈值生成推荐仓库。",
+    "pages": [
+      "https://oms.zhiyuansys.com/SharedInventory*"
+    ],
+    "updated": "2026-11-11",
+    "releaseNotes": "接入团队共享仓库，使用最新版 v1.1.0；保留原身份、权限和业务正文，更新地址统一指向公开 GitHub 固定文件。",
+    "usage": "首次导入带“名称”列的仓库优先级 CSV，行顺序即优先级；输入 SKU 后查询并生成仓库映射。与订单采集器在同一浏览器配置使用。",
+    "workflow": {
+      "id": "oms-temu-waybill",
+      "name": "OMS / TEMU 面单工作流",
+      "step": 1,
+      "role": "库存查询与推荐仓库"
+    },
+    "notes": "先导入仓库优先级 CSV；与采集器使用同一浏览器配置。",
+    "installPath": "scripts/oms-erp-shared-inventory-by-warehouse.user.js"
+  },
+  {
+    "id": "zhiyuan-erp-order-collector",
+    "name": "致远ERP 订单采集器",
+    "namespace": "lichuan.erp.collector",
+    "version": "2.8",
+    "platforms": [
+      "OMS"
+    ],
+    "category": "面单工作流",
+    "description": "采集当前订单、填充面板中的空仓库，并把选中订单设为本批 TEMU 任务。",
+    "pages": [
+      "https://oms.zhiyuansys.com/Order/index*"
+    ],
+    "updated": "2026-11-11",
+    "releaseNotes": "接入团队共享仓库，使用最新版 v2.8；保留原身份、权限和业务正文，更新地址统一指向公开 GitHub 固定文件。",
+    "usage": "在 OMS 订单列表重新采集，核对订单与仓库，勾选本批订单并点击“设为本批 TEMU 任务”。只填面板空仓库；数据改变后重新建立任务。",
+    "workflow": {
+      "id": "oms-temu-waybill",
+      "name": "OMS / TEMU 面单工作流",
+      "step": 2,
+      "role": "采集订单并建立批次"
+    },
+    "notes": "核对订单和仓库后建立本批任务；数据变化后重新建立。",
+    "installPath": "scripts/zhiyuan-erp-order-collector.user.js"
+  },
+  {
+    "id": "temu-warehouse-auto-fill",
+    "name": "Temu 仓库自动填充",
+    "namespace": "lichuan.temu.filler",
+    "version": "3.20",
+    "platforms": [
+      "OMS",
+      "TEMU"
+    ],
+    "category": "面单工作流",
+    "description": "接收 OMS 批次，查询对应订单，并在普通下单或补发货页面填写尺寸与仓库。",
+    "pages": [
+      "https://oms.zhiyuansys.com/Order/index*",
+      "https://agentseller.temu.com/mmsos/online-shipping.html*",
+      "https://agentseller-us.temu.com/mmsos/online-shipping.html*",
+      "https://agentseller-eu.temu.com/mmsos/online-shipping.html*",
+      "https://agentseller.temu.com/mmsos/online-reship.html*",
+      "https://agentseller-us.temu.com/mmsos/online-reship.html*",
+      "https://agentseller-eu.temu.com/mmsos/online-reship.html*",
+      "https://agentseller.temu.com/mmsos/orders.html*",
+      "https://agentseller-us.temu.com/mmsos/orders.html*",
+      "https://agentseller-eu.temu.com/mmsos/orders.html*"
+    ],
+    "updated": "2026-11-11",
+    "releaseNotes": "接入团队共享仓库，使用最新版 v3.20；保留原身份、权限和业务正文，更新地址统一指向公开 GitHub 固定文件。",
+    "usage": "同一浏览器安装采集器。导入商品尺寸表并核对仓库对照，先预演再填充；签名、物流渠道和最终下单由人工处理。订单列表仅在点击后填入并查询。",
+    "workflow": {
+      "id": "oms-temu-waybill",
+      "name": "OMS / TEMU 面单工作流",
+      "step": 3,
+      "role": "填写尺寸与仓库"
+    },
+    "notes": "需商品尺寸表；签名、渠道和最终下单由人工处理。",
+    "installPath": "scripts/temu-warehouse-auto-fill.user.js"
+  },
+  {
+    "id": "temu-waybill-batch-download",
+    "name": "Temu 面单批量下载",
+    "namespace": "temu-waybill-batch",
+    "version": "1.5.6",
+    "platforms": [
+      "OMS",
+      "TEMU"
+    ],
+    "category": "面单工作流",
+    "description": "接收当前 OMS 批次，按所选店铺下载普通或补寄物流面单。",
+    "pages": [
+      "https://oms.zhiyuansys.com/Order/index*",
+      "https://agentseller.temu.com/mmsos/waybill.html*",
+      "https://agentseller-us.temu.com/mmsos/waybill.html*",
+      "https://agentseller-eu.temu.com/mmsos/waybill.html*",
+      "https://agentseller.temu.com/mmsos/reship-list.html*",
+      "https://agentseller-us.temu.com/mmsos/reship-list.html*",
+      "https://agentseller-eu.temu.com/mmsos/reship-list.html*"
+    ],
+    "updated": "2026-11-11",
+    "releaseNotes": "接入团队共享仓库，使用最新版 v1.5.6；保留原身份、权限和业务正文，更新地址统一指向公开 GitHub 固定文件。",
+    "usage": "同一浏览器安装采集器与本脚本。建立 OMS 批次后打开对应区域的面单页，核对当前批次、店铺，按需导入 SKU 映射 CSV，再下载当前站或三站面单。普通与补寄使用各自页面。",
+    "workflow": {
+      "id": "oms-temu-waybill",
+      "name": "OMS / TEMU 面单工作流",
+      "step": 4,
+      "role": "下载本批物流面单"
+    },
+    "notes": "先建立本批任务；普通与补寄面单使用各自页面。",
+    "installPath": "scripts/temu-waybill-batch-download.user.js"
+  },
+  {
+    "id": "oms-erp-waybill-bulk-delete",
+    "name": "OMS ERP面单一键批量删除",
+    "namespace": "lucas.oms.bulkdelete",
+    "version": "1.8",
+    "platforms": [
+      "OMS"
+    ],
+    "category": "面单工作流",
+    "description": "预览订单关联附件，按明确选择逐项删除并回读结果。",
+    "pages": [
+      "https://oms.zhiyuansys.com/Order/index*"
+    ],
+    "updated": "2026-11-11",
+    "releaseNotes": "接入团队共享仓库，使用最新版 v1.8；保留原身份、权限和业务正文，更新地址统一指向公开 GitHub 固定文件。",
+    "usage": "在 OMS 订单页先读取并核对附件预览，仅在确需替换旧面单时执行删除。删除操作按脚本现有核对流程进行，完成后检查结果。",
+    "workflow": {
+      "id": "oms-temu-waybill",
+      "name": "OMS / TEMU 面单工作流",
+      "step": 5,
+      "role": "按需删除需替换的旧面单"
+    },
+    "notes": "仅在确需替换旧面单时使用；先核对附件预览。",
+    "installPath": "scripts/oms-erp-waybill-bulk-delete.user.js"
+  },
+  {
+    "id": "zhiyuansys-erp-order-attachment-upload",
+    "name": "ZhiyuanSys ERP · 订单附件批量自动上传",
+    "namespace": "https://lucas.local/",
+    "version": "0.2.6",
+    "platforms": [
+      "OMS"
+    ],
+    "category": "面单工作流",
+    "description": "按平台订单号、渠道 SKU 和跟踪号精确匹配本地 PDF，批量上传订单面单。",
+    "pages": [
+      "https://oms.zhiyuansys.com/Order/index*"
+    ],
+    "updated": "2026-11-11",
+    "releaseNotes": "接入团队共享仓库，使用最新版 v0.2.6；保留原身份、权限和业务正文，更新地址统一指向公开 GitHub 固定文件。",
+    "usage": "选择面单 PDF，使用下载步骤生成的文件名；先核对预扫匹配结果，再上传并查看报告。订单与渠道 SKU 必须精确匹配。",
+    "workflow": {
+      "id": "oms-temu-waybill",
+      "name": "OMS / TEMU 面单工作流",
+      "step": 6,
+      "role": "上传新面单并核对结果"
+    },
+    "notes": "先核对 PDF 文件名和预扫匹配，再执行上传。",
+    "installPath": "scripts/zhiyuansys-erp-order-attachment-upload.user.js"
+  },
+  {
+    "id": "temu-price-adjust-reject",
+    "name": "Temu 调价单一键拒绝助手",
+    "namespace": "https://agentseller.temu.com/",
+    "version": "0.1.1",
+    "platforms": [
+      "TEMU"
+    ],
+    "category": "调价处理",
+    "description": "按当前账号选择的店铺批量拒绝待卖家确认的调价单。",
+    "pages": [
+      "https://agentseller.temu.com/main/adjust-price-manage/order-price*"
+    ],
+    "updated": "2026-11-11",
+    "releaseNotes": "接入团队共享仓库，使用最新版 v0.1.1；保留原身份、权限和业务正文，更新地址统一指向公开 GitHub 固定文件。",
+    "usage": "打开商品价格申报页，选择本次店铺，先读取并核对待确认调价单，再执行拒绝并查看结果。",
+    "notes": "先选择店铺并核对待确认调价单，再执行拒绝。",
+    "installPath": "scripts/temu-price-adjust-reject.user.js"
+  },
+  {
+    "id": "bi-temu-profit-price-export",
+    "name": "致远BI TEMU利润率价格导出",
+    "namespace": "lucas.bi.temu.profit.price.export",
+    "version": "0.1.1",
+    "platforms": [
+      "致远 BI"
+    ],
+    "category": "数据导出",
+    "description": "保留 BI 售价参考页的全部字段，并按所选利润率范围导出价格表。",
+    "pages": [
+      "https://bi.zhiyuansys.com/webroot/decision*"
+    ],
+    "updated": "2026-11-11",
+    "releaseNotes": "接入团队共享仓库，使用最新版 v0.1.1；保留原身份、权限和业务正文，更新地址统一指向公开 GitHub 固定文件。",
+    "usage": "登录致远 BI，打开 TEMU 售价参考报表，设置利润率范围后导出；权限取自当前登录账号。",
+    "notes": "需登录 BI 并有报表权限；先设置利润率范围。",
+    "installPath": "scripts/bi-temu-profit-price-export.user.js"
+  },
+  {
+    "id": "erp-sales-sync-selfhost",
+    "name": "致远ERP同步到TEMU Copilot自建版",
+    "namespace": "http://192.168.10.17/",
+    "version": "0.3.5",
+    "platforms": [
+      "产品中心",
+      "OMS",
+      "商品运营工作台"
+    ],
+    "category": "数据同步",
+    "description": "同步或导出 ERP 销量月报，并向自建工作台补充 SHEIN 负责人。",
+    "pages": [
+      "https://product.zhiyuansys.com/SalesMonthly/index*",
+      "https://oms.zhiyuansys.com/SkuMap/index*"
+    ],
+    "updated": "2026-11-11",
+    "releaseNotes": "接入团队共享仓库，使用最新版 v0.3.5；保留原身份、权限和业务正文，更新地址统一指向公开 GitHub 固定文件。",
+    "usage": "在产品中心销量月报或 OMS SKU 映射页使用；需要能访问现有自建工作台服务，并具备对应业务权限。此处发布自建版，不包含妙搭版。",
+    "notes": "需能访问原自建工作台；本项为自建版。",
+    "installPath": "scripts/erp-sales-sync-selfhost.user.js"
+  },
+  {
+    "id": "temu-marketing-invite-detail-export",
+    "name": "Temu 活动采集与精确退出",
+    "namespace": "https://agentseller.temu.com/",
+    "version": "0.1.23",
+    "platforms": [
+      "TEMU"
+    ],
+    "category": "活动管理",
+    "description": "采集活动列表、邀约、报名明细，并按 CSV 精确核对或退出指定活动。",
+    "pages": [
+      "https://agentseller.temu.com/activity/marketing-activity*"
+    ],
+    "updated": "2026-11-11",
+    "releaseNotes": "接入团队共享仓库，使用最新版 v0.1.23；保留原身份、权限和业务正文，更新地址统一指向公开 GitHub 固定文件。",
+    "usage": "选择账号当前可用店铺，再加载活动与站点，按需采集或导出。精确退出默认试跑，核对 CSV 和报名记录后再选择是否正式提交。",
+    "notes": "先选择店铺、活动和站点；精确退出默认试跑。",
+    "installPath": "scripts/temu-marketing-invite-detail-export.user.js"
+  },
+  {
+    "id": "install-check",
+    "name": "团队脚本安装验证",
+    "version": "1.0.0",
+    "platforms": [
+      "通用"
+    ],
+    "category": "安装验证",
+    "description": "第一次使用时，确认油猴已经安装并允许脚本运行。",
+    "pages": [
+      "https://example.com/*"
+    ],
+    "updated": "2026-11-11",
+    "releaseNotes": "首个演示版本：在 example.com 显示运行成功提示，不读取店铺数据，不执行业务操作。",
+    "usage": "安装后打开 https://example.com/，页面顶部出现“团队脚本运行正常”即表示运行成功。",
+    "demo": true,
+    "namespace": "https://github.com/lucasshare/team-script-hub",
+    "notes": "安装后打开 example.com，查看运行成功提示。",
+    "installPath": "scripts/install-check.user.js"
+  }
+]
