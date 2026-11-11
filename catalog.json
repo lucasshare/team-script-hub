@@ -1,0 +1,16 @@
+[
+  {
+    "id": "install-check",
+    "name": "团队脚本安装验证",
+    "version": "1.0.0",
+    "platforms": ["通用"],
+    "category": "安装验证",
+    "description": "第一次使用时，确认油猴已经安装并允许脚本运行。",
+    "pages": ["https://example.com/*"],
+    "file": "userscripts/install-check/install-check.v1.0.0.user.js",
+    "updated": "2026-11-11",
+    "releaseNotes": "首个演示版本：在 example.com 显示运行成功提示，不读取店铺数据，不执行业务操作。",
+    "usage": "安装后打开 https://example.com/，页面顶部出现“团队脚本运行正常”即表示运行成功。",
+    "demo": true
+  }
+]

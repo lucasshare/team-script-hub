@@ -1,0 +1,13 @@
+{
+  "name": "team-script-hub",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "test": "node --test",
+    "build": "node tools/build.mjs",
+    "build:local": "node tools/build.mjs --local",
+    "preview": "node tools/preview.mjs"
+  }
+}
