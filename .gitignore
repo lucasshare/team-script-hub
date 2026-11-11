@@ -2,6 +2,7 @@ node_modules/
 dist/
 .trash/
 output/
+outputs/
 cache/
 screenshots/
 logs/

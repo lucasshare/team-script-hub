@@ -2,7 +2,7 @@
 
 ## GitHub 源码仓库
 
-创建个人私有仓库 `team-script-hub`，显示名称为“团队共享脚本中心”，仅 Lucas 管理；不要邀请协作者。将本项目源码推送至 `main`。本项目的 GitHub Actions 仅验证文件，不会自动发布网站，也不影响其他项目。
+源码已保存在个人私有仓库 [lucasshare/team-script-hub](https://github.com/lucasshare/team-script-hub)，产品名称为“团队共享脚本中心”，默认分支为 `main`。仅 Lucas 管理，不邀请协作者。本项目的 GitHub Actions 仅验证文件，不会自动发布网站，也不影响其他项目。
 
 ## 首次部署
 
