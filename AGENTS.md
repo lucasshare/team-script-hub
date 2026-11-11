@@ -12,6 +12,7 @@
 - 不添加前端密码、共享令牌等伪权限。首版发布权由 GitHub 控制，不承诺离职后能撤销已下载脚本。
 - 本项目现为公开 GitHub 分发仓库，使用 README 表格作为同事入口，不部署 Cloudflare 或独立网站。安装/更新文件固定为公开 `main/scripts/<ID>.user.js` / `.meta.js`，使用 raw.githubusercontent.com 地址。
 - `npm run build` 生成根目录 README、scripts.json 和 scripts/；必须一起提交。`npm run check` 验证生成结果与清单一致，不手工维护两个版本的首页表格。
+- 当前 GitHub CLI 授权不含 workflow 范围，沿用既有检查工作流；`build:local` 是 CI 兼容别名，实际只执行分发一致性检查，不构建网页。不要为本次共享修改工作流或扩大授权。
 - 不增加运行依赖；首版使用 Node 标准库及原生 HTML/CSS/JS，兼容 Mac/Windows。
 - UI 错误和状态写在页面内，不新增自定义二次确认弹窗。
 - 改动同步相应文档。README 管功能，PROJECT_MEMORY 管长期决定，docs/DEVELOPMENT_LOG 管过程与验收；避免重复。
