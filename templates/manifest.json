@@ -1,0 +1,873 @@
+{
+  "version": 1,
+  "sampleRows": 5,
+  "assets": [
+    {
+      "id": "sample-26d6358678fe",
+      "name": "AI 中台场景裂变-产品信息表.xlsx",
+      "path": "templates/reference/AI 中台场景裂变-产品信息表.xlsx",
+      "format": "XLSX",
+      "sheets": [
+        {
+          "name": "商品列表1791964463",
+          "headers": [
+            "SPU",
+            "主SKU",
+            "SKU",
+            "老品换新",
+            "新品",
+            "属性",
+            "材质",
+            "毛重",
+            "净重",
+            "包裹重",
+            "产品长",
+            "产品宽",
+            "产品高",
+            "包装长",
+            "包装宽",
+            "包装高",
+            "外箱长",
+            "外箱宽",
+            "外箱高",
+            "主商品名称",
+            "包裹名称",
+            "包裹数量",
+            "每箱PCs",
+            "品线",
+            "产品一级分类",
+            "产品二级分类",
+            "产品三级分类",
+            "运营一级分类",
+            "运营二级分类",
+            "运营三级分类",
+            "标签",
+            "供应商名称",
+            "供应商报价",
+            "供应商报价币种",
+            "运营",
+            "运营组",
+            "PMC",
+            "采购",
+            "开发",
+            "设计",
+            "添加时间",
+            "状态",
+            "SPU状态",
+            "添加人",
+            "报关品名",
+            "出运港",
+            "采购交期",
+            "价格来源",
+            "最近上架时间",
+            "初次下架时间",
+            "最近下架时间",
+            "最近下架原因",
+            "最近下架备注",
+            "尾程类型",
+            "包装方式",
+            "更多属性状态",
+            "商品类型",
+            "贸易条款",
+            "物流属性",
+            "当前老品换新SKU添加时间",
+            "最初老品换新SKU",
+            "最初老品换新SKU添加时间",
+            "历史老品sku1",
+            "历史老品sku1添加时间",
+            "历史老品sku2",
+            "历史老品sku2添加时间",
+            "历史老品sku3",
+            "历史老品sku3添加时间",
+            "历史老品sku4",
+            "历史老品sku4添加时间",
+            "历史老品sku5",
+            "历史老品sku5添加时间"
+          ],
+          "dataRows": 5
+        },
+        {
+          "name": "库存表",
+          "headers": [
+            "SKU",
+            "图片",
+            "产品名称",
+            "运营",
+            "开发",
+            "仓区",
+            "总库存数",
+            "锁定库存",
+            "可用库存",
+            "采购中",
+            "在途",
+            "仓区近7天日均销",
+            "仓区近14天日均销",
+            "仓区近30天日均销",
+            "预警阈值",
+            "市场",
+            "是否新品",
+            "是否清货",
+            "更新时间"
+          ],
+          "dataRows": 5
+        }
+      ],
+      "scriptVersions": {},
+      "sha256": "5363dd3ad112c73a3cb82abd3ddbb2cfffab2b4e8d2d709ca90b6ca72a4b8c38"
+    },
+    {
+      "id": "sample-7bfcd9d40108",
+      "name": "BI 阶梯价格.xlsx",
+      "path": "templates/reference/BI 阶梯价格.xlsx",
+      "format": "XLSX",
+      "sheets": [
+        {
+          "name": "Sheet1",
+          "headers": [
+            "站点",
+            "SKU",
+            "头程单价(CNY)",
+            "尾程单价(USD)",
+            "尾程参考价值",
+            "清货状态",
+            "-100%利润售价(USD)",
+            "-99%利润售价(USD)",
+            "-98%利润售价(USD)",
+            "-97%利润售价(USD)",
+            "-96%利润售价(USD)",
+            "-95%利润售价(USD)",
+            "-94%利润售价(USD)",
+            "-93%利润售价(USD)",
+            "-92%利润售价(USD)",
+            "-91%利润售价(USD)",
+            "-90%利润售价(USD)",
+            "-89%利润售价(USD)",
+            "-88%利润售价(USD)",
+            "-87%利润售价(USD)",
+            "-86%利润售价(USD)",
+            "-85%利润售价(USD)",
+            "-84%利润售价(USD)",
+            "-83%利润售价(USD)",
+            "-82%利润售价(USD)",
+            "-81%利润售价(USD)",
+            "-80%利润售价(USD)",
+            "-79%利润售价(USD)",
+            "-78%利润售价(USD)",
+            "-77%利润售价(USD)",
+            "-76%利润售价(USD)",
+            "-75%利润售价(USD)",
+            "-74%利润售价(USD)",
+            "-73%利润售价(USD)",
+            "-72%利润售价(USD)",
+            "-71%利润售价(USD)",
+            "-70%利润售价(USD)",
+            "-69%利润售价(USD)",
+            "-68%利润售价(USD)",
+            "-67%利润售价(USD)",
+            "-66%利润售价(USD)",
+            "-65%利润售价(USD)",
+            "-64%利润售价(USD)",
+            "-63%利润售价(USD)",
+            "-62%利润售价(USD)",
+            "-61%利润售价(USD)",
+            "-60%利润售价(USD)",
+            "-59%利润售价(USD)",
+            "-58%利润售价(USD)",
+            "-57%利润售价(USD)",
+            "-56%利润售价(USD)",
+            "-55%利润售价(USD)",
+            "-54%利润售价(USD)",
+            "-53%利润售价(USD)",
+            "-52%利润售价(USD)",
+            "-51%利润售价(USD)",
+            "-50%利润售价(USD)",
+            "-49%利润售价(USD)",
+            "-48%利润售价(USD)",
+            "-47%利润售价(USD)",
+            "-46%利润售价(USD)",
+            "-45%利润售价(USD)",
+            "-44%利润售价(USD)",
+            "-43%利润售价(USD)",
+            "-42%利润售价(USD)",
+            "-41%利润售价(USD)",
+            "-40%利润售价(USD)",
+            "-39%利润售价(USD)",
+            "-38%利润售价(USD)",
+            "-37%利润售价(USD)",
+            "-36%利润售价(USD)",
+            "-35%利润售价(USD)",
+            "-34%利润售价(USD)",
+            "-33%利润售价(USD)",
+            "-32%利润售价(USD)",
+            "-31%利润售价(USD)",
+            "-30%利润售价(USD)",
+            "-29%利润售价(USD)",
+            "-28%利润售价(USD)",
+            "-27%利润售价(USD)",
+            "-26%利润售价(USD)",
+            "-25%利润售价(USD)",
+            "-24%利润售价(USD)",
+            "-23%利润售价(USD)",
+            "-22%利润售价(USD)",
+            "-21%利润售价(USD)",
+            "-20%利润售价(USD)",
+            "-19%利润售价(USD)",
+            "-18%利润售价(USD)",
+            "-17%利润售价(USD)",
+            "-16%利润售价(USD)",
+            "-15%利润售价(USD)",
+            "-14%利润售价(USD)",
+            "-13%利润售价(USD)",
+            "-12%利润售价(USD)",
+            "-11%利润售价(USD)",
+            "-10%利润售价(USD)",
+            "-9%利润售价(USD)",
+            "-8%利润售价(USD)",
+            "-7%利润售价(USD)",
+            "-6%利润售价(USD)",
+            "-5%利润售价(USD)",
+            "-4%利润售价(USD)",
+            "-3%利润售价(USD)",
+            "-2%利润售价(USD)",
+            "-1%利润售价(USD)",
+            "0%利润售价(USD)",
+            "1%利润售价(USD)",
+            "2%利润售价(USD)",
+            "3%利润售价(USD)",
+            "4%利润售价(USD)",
+            "5%利润售价(USD)",
+            "6%利润售价(USD)",
+            "7%利润售价(USD)",
+            "8%利润售价(USD)",
+            "9%利润售价(USD)",
+            "10%利润售价(USD)",
+            "11%利润售价(USD)",
+            "12%利润售价(USD)",
+            "13%利润售价(USD)",
+            "14%利润售价(USD)",
+            "15%利润售价(USD)",
+            "16%利润售价(USD)",
+            "17%利润售价(USD)",
+            "18%利润售价(USD)",
+            "19%利润售价(USD)",
+            "20%利润售价(USD)",
+            "21%利润售价(USD)",
+            "22%利润售价(USD)",
+            "23%利润售价(USD)",
+            "24%利润售价(USD)",
+            "25%利润售价(USD)",
+            "26%利润售价(USD)",
+            "27%利润售价(USD)",
+            "28%利润售价(USD)",
+            "29%利润售价(USD)",
+            "30%利润售价(USD)"
+          ],
+          "dataRows": 5
+        }
+      ],
+      "scriptVersions": {},
+      "sha256": "ff981c789f4af81fc903acde2b905e5c6da0f86b041997e08fc56cc289af5e0b"
+    },
+    {
+      "id": "sample-ff62e988b81f",
+      "name": "SKU 绑定助手.csv",
+      "path": "templates/reference/SKU 绑定助手.csv",
+      "format": "CSV",
+      "sheets": [
+        {
+          "name": "数据",
+          "headers": [
+            "SKU货号",
+            "产品sku"
+          ],
+          "dataRows": 5
+        }
+      ],
+      "scriptVersions": {},
+      "sha256": "4cfaca285a2404f429c35d3034a86d97a9fcaf06c2b4e5384a9be4606ebb1f7c"
+    },
+    {
+      "id": "sample-3bd26ccf08d6",
+      "name": "TEMU 订单 sku 匹配.csv",
+      "path": "templates/reference/TEMU 订单 sku 匹配.csv",
+      "format": "CSV",
+      "sheets": [
+        {
+          "name": "数据",
+          "headers": [
+            "SPU ID",
+            "SKC ID",
+            "SKU ID",
+            "SKC货号",
+            "SKU货号",
+            "产品sku"
+          ],
+          "dataRows": 5
+        }
+      ],
+      "scriptVersions": {},
+      "sha256": "b579860bf88797216e8126d8e0ad9a07f25c7dbfee76be6a61f8b8a7ffd80e13"
+    },
+    {
+      "id": "sample-a19d98e6a438",
+      "name": "TEMU订单SKU匹配模板.csv",
+      "path": "templates/reference/TEMU订单SKU匹配模板.csv",
+      "format": "CSV",
+      "sheets": [
+        {
+          "name": "数据",
+          "headers": [
+            "SKU ID",
+            "产品sku"
+          ],
+          "dataRows": 5
+        }
+      ],
+      "scriptVersions": {},
+      "sha256": "3b5d97ea2660660c67ddddccccb57f0db41e58fd32e29e4eba74368562b8cdfa"
+    },
+    {
+      "id": "sample-55b499b82ba8",
+      "name": "skuid_sku货号映射.csv",
+      "path": "templates/reference/skuid_sku货号映射.csv",
+      "format": "CSV",
+      "sheets": [
+        {
+          "name": "数据",
+          "headers": [
+            "SKU ID",
+            "SKU货号"
+          ],
+          "dataRows": 5
+        }
+      ],
+      "scriptVersions": {
+        "temu-waybill-batch-download": "1.5.6"
+      },
+      "sha256": "c6ca84d8d5ec11f71249892bceb8f83222251e89ce3d54503e7caea7a6c2cb45"
+    },
+    {
+      "id": "sample-76d603b55eeb",
+      "name": "仓库对照表.csv",
+      "path": "templates/reference/仓库对照表.csv",
+      "format": "CSV",
+      "sheets": [
+        {
+          "name": "数据",
+          "headers": [
+            "渠道（店铺-站点）",
+            "ERP 仓库名",
+            "Temu 仓库名",
+            "平台仓库id",
+            "备注"
+          ],
+          "dataRows": 5
+        }
+      ],
+      "scriptVersions": {
+        "temu-warehouse-auto-fill": "3.20"
+      },
+      "sha256": "1488985aacf62788505afe983305dab492089024ae151834c1b704ca8b8161fd"
+    },
+    {
+      "id": "sample-55c3bd9a72ae",
+      "name": "仓库映射列表添加.xlsx",
+      "path": "templates/reference/仓库映射列表添加.xlsx",
+      "format": "XLSX",
+      "sheets": [
+        {
+          "name": "添加",
+          "headers": [
+            "本地仓库",
+            "平台",
+            "渠道",
+            "平台仓库名称",
+            "平台仓库ID",
+            "扩展编码"
+          ],
+          "dataRows": 5
+        },
+        {
+          "name": "渠道列表",
+          "headers": [
+            "渠道",
+            "区域"
+          ],
+          "dataRows": 5
+        }
+      ],
+      "scriptVersions": {},
+      "sha256": "901134463bb960eb2e9703255e62c1cd9ca0c9f665917daff6f4b0e6ce8959f1"
+    },
+    {
+      "id": "sample-094f5dfd924d",
+      "name": "停产产品查询.xlsx",
+      "path": "templates/reference/停产产品查询.xlsx",
+      "format": "XLSX",
+      "sheets": [
+        {
+          "name": "Sheet1",
+          "headers": [
+            "商品标题",
+            "SPU ID",
+            "SKC ID",
+            "SKU ID",
+            "SKC货号",
+            "SKU货号",
+            "叶子类目名称",
+            "经营站点",
+            "商品状态",
+            "规格1名称",
+            "规格2名称",
+            "申报价格站点",
+            "申报价格(USD)",
+            "申报价格状态",
+            "库存",
+            "创建时间",
+            "店铺名称",
+            "一级类目",
+            "goodsId",
+            "库存sku",
+            "产品sku",
+            "仓库"
+          ],
+          "dataRows": 5
+        }
+      ],
+      "scriptVersions": {},
+      "sha256": "f144338579dfb01785d612e56fd04890303faf29ddf60cd926f0c7d687d01f9d"
+    },
+    {
+      "id": "sample-0d6b434cfb0b",
+      "name": "停产产品查询_副本.xlsx",
+      "path": "templates/reference/停产产品查询_副本.xlsx",
+      "format": "XLSX",
+      "sheets": [
+        {
+          "name": "Sheet1",
+          "headers": [
+            "产品sku",
+            "仓库"
+          ],
+          "dataRows": 5
+        }
+      ],
+      "scriptVersions": {},
+      "sha256": "76274f553adffe2566037e2b88bb03ff5c3a179cff04d974e398fa04c8633ce1"
+    },
+    {
+      "id": "sample-049849a6fc3b",
+      "name": "商品尺寸数据表.xlsx",
+      "path": "templates/reference/商品尺寸数据表.xlsx",
+      "format": "XLSX",
+      "sheets": [
+        {
+          "name": "Sheet1",
+          "headers": [
+            "主SKU",
+            "SKU",
+            "毛重",
+            "包装长",
+            "包装宽",
+            "包装高"
+          ],
+          "dataRows": 5
+        }
+      ],
+      "scriptVersions": {
+        "temu-warehouse-auto-fill": "3.20"
+      },
+      "sha256": "821574ab2f3d6351594a5e9ca4d3188cfa9d350f2eee7d62342557a35b317e24"
+    },
+    {
+      "id": "sample-6222607b345f",
+      "name": "商品运费预估.csv",
+      "path": "templates/reference/商品运费预估.csv",
+      "format": "CSV",
+      "sheets": [
+        {
+          "name": "数据",
+          "headers": [
+            "SKU",
+            "毛重",
+            "包装长",
+            "包装宽",
+            "包装高"
+          ],
+          "dataRows": 5
+        }
+      ],
+      "scriptVersions": {},
+      "sha256": "e659e245204e90f0d5816daddbf67c206fb766645aec71ad83ea6624bedc2b85"
+    },
+    {
+      "id": "sample-06c267f6cbb7",
+      "name": "广告调整表.csv",
+      "path": "templates/reference/广告调整表.csv",
+      "format": "CSV",
+      "sheets": [
+        {
+          "name": "数据",
+          "headers": [
+            "建议ROAS",
+            "当前日预算",
+            "区域名称",
+            "SPU ID"
+          ],
+          "dataRows": 5
+        }
+      ],
+      "scriptVersions": {},
+      "sha256": "a01a1ccd591ec8ba29d0245335a3c36e7c704566eaa9de5fdfac147966fc4186"
+    },
+    {
+      "id": "sample-d136489da081",
+      "name": "批量退活动.csv",
+      "path": "templates/reference/批量退活动.csv",
+      "format": "CSV",
+      "sheets": [
+        {
+          "name": "数据",
+          "headers": [
+            "活动类型(活动主题）",
+            "SPU ID",
+            "SKC ID",
+            "SKC货号",
+            "SKU ID",
+            "SKU货号",
+            "颜色属性",
+            "尺码属性",
+            "站点",
+            "活动申报价格",
+            "币种",
+            "店铺"
+          ],
+          "dataRows": 5
+        }
+      ],
+      "scriptVersions": {
+        "temu-marketing-invite-detail-export": "0.1.23"
+      },
+      "sha256": "ed0fa704b657f860bfdcf6c7f4b1103df6dcd0d2c239cda8f03d3585a266301e"
+    },
+    {
+      "id": "sample-6eb052572bc9",
+      "name": "日常申报价调整.csv",
+      "path": "templates/reference/日常申报价调整.csv",
+      "format": "CSV",
+      "sheets": [
+        {
+          "name": "数据",
+          "headers": [
+            "申报价格站点",
+            "SKC ID",
+            "店铺名称",
+            "SPU ID",
+            "SKU ID",
+            "日常申报价格",
+            "需调整日常申报价格",
+            "活动价格"
+          ],
+          "dataRows": 5
+        }
+      ],
+      "scriptVersions": {},
+      "sha256": "1dfaf0ed12fb09bfd837e3c982bfadc37ff1bfd5e18e212a449cb58a1c9fd71f"
+    },
+    {
+      "id": "sample-9f47ebff34a0",
+      "name": "活动价格调整-单活动名称.csv",
+      "path": "templates/reference/活动价格调整-单活动名称.csv",
+      "format": "CSV",
+      "sheets": [
+        {
+          "name": "数据",
+          "headers": [
+            "店铺信息",
+            "活动状态",
+            "活动类型ID",
+            "活动类型",
+            "活动专题ID",
+            "活动专题",
+            "SPU ID",
+            "SKC ID",
+            "SKC货号",
+            "SKU ID",
+            "SKU货号",
+            "SKU属性",
+            "站点",
+            "站点ID",
+            "日常申报价",
+            "活动申报价格",
+            "活动折扣",
+            "币种",
+            "场次ID",
+            "场次名称",
+            "场次开始时间",
+            "场次结束时间",
+            "活动库存",
+            "剩余活动库存",
+            "报名ID",
+            "SKU",
+            "区域",
+            "ERP库存",
+            "计划清库数量",
+            "新平台二组销量占比",
+            "最低价格",
+            "旧BI-10%",
+            "差价",
+            "最低价与活动价差价",
+            "定价",
+            "定价与-10%差价"
+          ],
+          "dataRows": 5
+        }
+      ],
+      "scriptVersions": {},
+      "sha256": "d13b52c5b785575e5932f3385480a3274933b6331401ca3e18acaf329c179612"
+    },
+    {
+      "id": "sample-b9c7e0bb9466",
+      "name": "流量加速器_副本.csv",
+      "path": "templates/reference/流量加速器_副本.csv",
+      "format": "CSV",
+      "sheets": [
+        {
+          "name": "数据",
+          "headers": [
+            "SKU ID",
+            "站点名称",
+            "店铺名称",
+            "调整活动申报价",
+            "调整日常申报价",
+            "当前供货价",
+            "SPU ID",
+            "SKC ID"
+          ],
+          "dataRows": 5
+        }
+      ],
+      "scriptVersions": {},
+      "sha256": "27ce65e301f69f10509b293c477d387284b122aec8c143b8710e221669afa514"
+    },
+    {
+      "id": "sample-f0dbc6da5c00",
+      "name": "流量加速器_结果 (47)_清洗版.csv",
+      "path": "templates/reference/流量加速器_结果 (47)_清洗版.csv",
+      "format": "CSV",
+      "sheets": [
+        {
+          "name": "数据",
+          "headers": [
+            "活动类型(活动主题）",
+            "SPU ID",
+            "SKC ID",
+            "SKC货号",
+            "SKU ID",
+            "SKU货号",
+            "颜色属性",
+            "尺码属性",
+            "站点",
+            "活动申报价格",
+            "币种",
+            "店铺",
+            "情况",
+            "备注",
+            "调整价格",
+            "对应申报价格1",
+            "对应申报价格2",
+            "对应申报价格3"
+          ],
+          "dataRows": 5
+        }
+      ],
+      "scriptVersions": {},
+      "sha256": "7f0d8cfad8ff3c1cc78bf1d04249a5d73ccc1138c6dea42d4c0dd50f48fdf6dc"
+    },
+    {
+      "id": "sample-c631b2004489",
+      "name": "爆款率未达标流量加速器.csv",
+      "path": "templates/reference/爆款率未达标流量加速器.csv",
+      "format": "CSV",
+      "sheets": [
+        {
+          "name": "数据",
+          "headers": [
+            "活动类型(活动主题）",
+            "SPU ID",
+            "SKC ID",
+            "SKC货号",
+            "SKU ID",
+            "SKU货号",
+            "颜色属性",
+            "尺码属性",
+            "站点",
+            "活动申报价格",
+            "币种",
+            "店铺",
+            "情况"
+          ],
+          "dataRows": 5
+        }
+      ],
+      "scriptVersions": {},
+      "sha256": "66b10e1ab7f5e46ec20d96336bf80a04e2bf8436a426b4fa09d40b05b970b753"
+    },
+    {
+      "id": "sample-5a384c8f232a",
+      "name": "美发加仓库挑选顺序.csv",
+      "path": "templates/reference/美发加仓库挑选顺序.csv",
+      "format": "CSV",
+      "sheets": [
+        {
+          "name": "数据",
+          "headers": [
+            "渠道",
+            "名称",
+            "所属仓区",
+            "地址",
+            "添加时间"
+          ],
+          "dataRows": 5
+        }
+      ],
+      "scriptVersions": {
+        "oms-erp-shared-inventory-by-warehouse": "1.1.0"
+      },
+      "sha256": "f8e9e22d07c7efe5cc173eb40c61b5de4eee453cfe10a63bcc6a5fc218c31f02"
+    },
+    {
+      "id": "sample-484d19165678",
+      "name": "账单价格数据.xlsx",
+      "path": "templates/reference/账单价格数据.xlsx",
+      "format": "XLSX",
+      "sheets": [
+        {
+          "name": "账单数据源",
+          "headers": [
+            "数据源序号",
+            "来源文件",
+            "来源Sheet",
+            "来源行号",
+            "月份",
+            "平台",
+            "站点原值",
+            "站点代码",
+            "自定义SKU",
+            "数量",
+            "产品销售$（含调整收入）",
+            "账单销售单价",
+            "汇率",
+            "销售额RMB",
+            "公摊前利润",
+            "源利润率",
+            "公摊前利润率复算",
+            "运费收入USD",
+            "退款金额USD",
+            "源与复算差异"
+          ],
+          "dataRows": 5
+        },
+        {
+          "name": "利润估算月度",
+          "headers": [
+            "账单年月",
+            "站点代码",
+            "自定义SKU",
+            "销售数量",
+            "产品销售额USD",
+            "运费收入USD",
+            "采购头程成本USD",
+            "其他固定成本USD",
+            "比例费用USD",
+            "退款金额USD",
+            "售后净费用USD",
+            "来源文件",
+            "账单实际尾程USD",
+            "尾程有效销量",
+            "账单实际利润USD",
+            "账单实际净收入USD",
+            "账单汇率",
+            "广告费用USD"
+          ],
+          "dataRows": 5
+        },
+        {
+          "name": "尾程SKU映射",
+          "headers": [
+            "SKU",
+            "主SKU",
+            "包装体积m3",
+            "采购单价",
+            "采购币种",
+            "来源文件"
+          ],
+          "dataRows": 5
+        },
+        {
+          "name": "实际头程汇率",
+          "headers": [
+            "月份",
+            "美国实际头程（大件）",
+            "加拿大实际头程（大件）",
+            "欧洲实际头程（大件）",
+            "美元汇率（实际）"
+          ],
+          "dataRows": 5
+        }
+      ],
+      "scriptVersions": {},
+      "sha256": "088680276a29acfc3db97f417fcb554ac92c2e8d1df7663a5c6d341505100098"
+    },
+    {
+      "id": "sample-8867b9a0aaf5",
+      "name": "预览图更换表.csv",
+      "path": "templates/reference/预览图更换表.csv",
+      "format": "CSV",
+      "sheets": [
+        {
+          "name": "数据",
+          "headers": [
+            "SPU ID",
+            "SKC ID",
+            "SKU ID",
+            "经营站点",
+            "商品状态",
+            "创建时间",
+            "店铺名称"
+          ],
+          "dataRows": 5
+        }
+      ],
+      "scriptVersions": {},
+      "sha256": "1aaf8770f7a44dd6bfb3b2781d6e98929e9311d658ba674801988552d4576712"
+    },
+    {
+      "id": "sample-e2e6b98d256e",
+      "name": "预览图更换表_副本.csv",
+      "path": "templates/reference/预览图更换表_副本.csv",
+      "format": "CSV",
+      "sheets": [
+        {
+          "name": "数据",
+          "headers": [
+            "SPU ID",
+            "SKC ID",
+            "SKU ID",
+            "经营站点",
+            "商品状态",
+            "创建时间",
+            "店铺名称"
+          ],
+          "dataRows": 5
+        }
+      ],
+      "scriptVersions": {},
+      "sha256": "389452d686f3e04be368dbbe4d0696540aba7c568b7dc65ee14571a57478b329"
+    }
+  ],
+  "bundle": {
+    "path": "templates/reference-samples.zip",
+    "sha256": "620a4e8ad53b850709b8f3b05c092e483f31a36ed805b69578c3cfe63b683aa1"
+  }
+}

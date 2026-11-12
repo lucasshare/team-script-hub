@@ -22,6 +22,9 @@
       "role": "库存查询与推荐仓库"
     },
     "notes": "先导入仓库优先级 CSV；与采集器使用同一浏览器配置。",
+    "templateIds": [
+      "sample-5a384c8f232a"
+    ],
     "installPath": "scripts/oms-erp-shared-inventory-by-warehouse.user.js"
   },
   {
@@ -47,6 +50,7 @@
       "role": "采集订单并建立批次"
     },
     "notes": "核对订单和仓库后建立本批任务；数据变化后重新建立。",
+    "templateNote": "复用库存查询映射，无独立表格模板",
     "installPath": "scripts/zhiyuan-erp-order-collector.user.js"
   },
   {
@@ -82,6 +86,10 @@
       "role": "填写尺寸与仓库"
     },
     "notes": "需商品尺寸表；签名、渠道和最终下单由人工处理。",
+    "templateIds": [
+      "sample-76d603b55eeb",
+      "sample-049849a6fc3b"
+    ],
     "installPath": "scripts/temu-warehouse-auto-fill.user.js"
   },
   {
@@ -114,6 +122,9 @@
       "role": "下载本批物流面单"
     },
     "notes": "先建立本批任务；普通与补寄面单使用各自页面。",
+    "templateIds": [
+      "sample-55b499b82ba8"
+    ],
     "installPath": "scripts/temu-waybill-batch-download.user.js"
   },
   {
@@ -164,6 +175,7 @@
       "role": "上传新面单并核对结果"
     },
     "notes": "先核对 PDF 文件名和预扫匹配，再执行上传。",
+    "templateNote": "使用面单 PDF，无表格模板",
     "installPath": "scripts/zhiyuansys-erp-order-attachment-upload.user.js"
   },
   {
@@ -243,6 +255,9 @@
     "releaseNotes": "接入团队共享仓库，使用最新版 v0.1.23；保留原身份、权限和业务正文，更新地址统一指向公开 GitHub 固定文件。",
     "usage": "选择账号当前可用店铺，再加载活动与站点，按需采集或导出。精确退出默认试跑，核对 CSV 和报名记录后再选择是否正式提交。",
     "notes": "先选择店铺、活动和站点；精确退出默认试跑。",
+    "templateIds": [
+      "sample-d136489da081"
+    ],
     "installPath": "scripts/temu-marketing-invite-detail-export.user.js"
   },
   {

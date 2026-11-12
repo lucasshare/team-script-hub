@@ -23,7 +23,10 @@
       "step": 1,
       "role": "库存查询与推荐仓库"
     },
-    "notes": "先导入仓库优先级 CSV；与采集器使用同一浏览器配置。"
+    "notes": "先导入仓库优先级 CSV；与采集器使用同一浏览器配置。",
+    "templateIds": [
+      "sample-5a384c8f232a"
+    ]
   },
   {
     "id": "zhiyuan-erp-order-collector",
@@ -49,7 +52,8 @@
       "step": 2,
       "role": "采集订单并建立批次"
     },
-    "notes": "核对订单和仓库后建立本批任务；数据变化后重新建立。"
+    "notes": "核对订单和仓库后建立本批任务；数据变化后重新建立。",
+    "templateNote": "复用库存查询映射，无独立表格模板"
   },
   {
     "id": "temu-warehouse-auto-fill",
@@ -85,7 +89,11 @@
       "step": 3,
       "role": "填写尺寸与仓库"
     },
-    "notes": "需商品尺寸表；签名、渠道和最终下单由人工处理。"
+    "notes": "需商品尺寸表；签名、渠道和最终下单由人工处理。",
+    "templateIds": [
+      "sample-76d603b55eeb",
+      "sample-049849a6fc3b"
+    ]
   },
   {
     "id": "temu-waybill-batch-download",
@@ -118,7 +126,10 @@
       "step": 4,
       "role": "下载本批物流面单"
     },
-    "notes": "先建立本批任务；普通与补寄面单使用各自页面。"
+    "notes": "先建立本批任务；普通与补寄面单使用各自页面。",
+    "templateIds": [
+      "sample-55b499b82ba8"
+    ]
   },
   {
     "id": "oms-erp-waybill-bulk-delete",
@@ -170,7 +181,8 @@
       "step": 6,
       "role": "上传新面单并核对结果"
     },
-    "notes": "先核对 PDF 文件名和预扫匹配，再执行上传。"
+    "notes": "先核对 PDF 文件名和预扫匹配，再执行上传。",
+    "templateNote": "使用面单 PDF，无表格模板"
   },
   {
     "id": "temu-price-adjust-reject",
@@ -253,7 +265,10 @@
     "releaseNotes": "接入团队共享仓库，使用最新版 v0.1.23；保留原身份、权限和业务正文，更新地址统一指向公开 GitHub 固定文件。",
     "usage": "选择账号当前可用店铺，再加载活动与站点，按需采集或导出。精确退出默认试跑，核对 CSV 和报名记录后再选择是否正式提交。",
     "sourceSha256": "8d0f172bdc2e4eab2bb5606580a237983bf3c0ea57b9969f4bd63f88caaa8c88",
-    "notes": "先选择店铺、活动和站点；精确退出默认试跑。"
+    "notes": "先选择店铺、活动和站点；精确退出默认试跑。",
+    "templateIds": [
+      "sample-d136489da081"
+    ]
   },
   {
     "id": "install-check",

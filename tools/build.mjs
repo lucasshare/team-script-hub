@@ -3,6 +3,7 @@ import { resolve, sep, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { Script } from 'node:vm';
 import { createHash } from 'node:crypto';
+import { loadTemplates, urlPath } from './template-assets.mjs';
 
 export const projectRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -38,6 +39,7 @@ export function withUpdateUrls(source, origin, id) {
 export async function prepare({ root = projectRoot, origin = DISTRIBUTION_BASE, catalog } = {}) {
   const entries = catalog ?? JSON.parse(await readFile(resolve(root, 'catalog.json'), 'utf8'));
   if (!Array.isArray(entries) || entries.length === 0) throw new Error('发布清单必须是非空数组。');
+  const templates = await loadTemplates(root, entries);
   const files = new Map();
   const published = [];
   const seen = new Set();
@@ -92,7 +94,7 @@ export async function prepare({ root = projectRoot, origin = DISTRIBUTION_BASE, 
     if ([...group.steps].sort((a, b) => a - b).some((step, index) => step !== index + 1)) throw new Error('工作流步骤必须从 1 连续排列。');
   }
   files.set('scripts.json', JSON.stringify(published, null, 2) + '\n');
-  files.set('README.md', renderReadme(entries, origin));
+  files.set('README.md', renderReadme(entries, origin, templates));
   return files;
 }
 
@@ -100,11 +102,13 @@ function markdown(value) {
   return String(value).replaceAll('|', '&#124;').replace(/[\r\n]+/g, ' ');
 }
 
-export function renderReadme(entries, base = DISTRIBUTION_BASE) {
-  const header = '| 平台 | 脚本名称 | 用途 | 使用注意 | 当前版本 | 安装链接 |\n| --- | --- | --- | --- | --- | --- |';
+export function renderReadme(entries, base = DISTRIBUTION_BASE, templates) {
+  const header = '| 平台 | 脚本名称 | 用途 | 使用注意 | 当前版本 | 安装链接 | 配套模板 |\n| --- | --- | --- | --- | --- | --- | --- |';
   const table = items => header + '\n' + items.map(entry => {
     const note = entry.workflow ? `面单第 ${entry.workflow.step} 步。${entry.notes ?? entry.usage}` : entry.notes ?? entry.usage;
-    return `| ${entry.platforms.map(markdown).join('、')} | ${markdown(entry.name)} | ${markdown(entry.description)} | ${markdown(note)} | v${entry.version} | [安装脚本](${base}/scripts/${entry.id}.user.js) |`;
+    const links = (entry.templateIds ?? []).map(id => templates.assets.get(id)).map(asset => `[${markdown(asset.name)}](${base}/${urlPath(asset.path)})`);
+    const templateCell = links.length ? links.join('<br>') + '<br>[填写说明](templates/filling-guide.md)' : markdown(entry.templateNote ?? '无需表格模板');
+    return `| ${entry.platforms.map(markdown).join('、')} | ${markdown(entry.name)} | ${markdown(entry.description)} | ${markdown(note)} | v${entry.version} | [安装脚本](${base}/scripts/${entry.id}.user.js) | ${templateCell} |`;
   }).join('\n');
   const flow = entries.filter(item => item.workflow).sort((a, b) => a.workflow.step - b.workflow.step);
   const standalone = entries.filter(item => !item.workflow && !item.demo);
@@ -114,6 +118,12 @@ export function renderReadme(entries, base = DISTRIBUTION_BASE) {
 团队共享的油猴脚本库。打开本页查看用途，点击“安装脚本”，在 Tampermonkey 页面确认安装。无需单独的网站或 GitHub 登录。
 
 当前收录 **${flow.length + standalone.length} 个业务脚本**，均为已确认共享的最新版；另提供安装验证示例。由 Lucas 统一维护，后续更新使用固定地址。
+
+## 配套参考表
+
+[下载全部 ${templates.manifest.assets.length} 份参考表 ZIP](${base}/${urlPath(templates.manifest.bundle.path)}) · [查看参考表目录](templates/README.md) · [填写说明](templates/filling-guide.md)
+
+参考表来自现用文件，每张表只保留表头和前 5 条数据，供查看格式和填法。使用前请替换为自己的完整业务数据，不能把精简样例直接当作完整配置表。CSV 若打开为文本，可下载 ZIP。
 
 ## 先安装油猴
 

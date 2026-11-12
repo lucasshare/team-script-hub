@@ -27,3 +27,28 @@ __pycache__/
 .cursor/
 .aider*
 Codex.local.md
+
+# 用户明确授权的前5条参考样例；不放开其他业务CSV/XLSX
+!templates/reference/AI 中台场景裂变-产品信息表.xlsx
+!templates/reference/BI 阶梯价格.xlsx
+!templates/reference/SKU 绑定助手.csv
+!templates/reference/TEMU 订单 sku 匹配.csv
+!templates/reference/TEMU订单SKU匹配模板.csv
+!templates/reference/skuid_sku货号映射.csv
+!templates/reference/仓库对照表.csv
+!templates/reference/仓库映射列表添加.xlsx
+!templates/reference/停产产品查询.xlsx
+!templates/reference/停产产品查询_副本.xlsx
+!templates/reference/商品尺寸数据表.xlsx
+!templates/reference/商品运费预估.csv
+!templates/reference/广告调整表.csv
+!templates/reference/批量退活动.csv
+!templates/reference/日常申报价调整.csv
+!templates/reference/活动价格调整-单活动名称.csv
+!templates/reference/流量加速器_副本.csv
+!templates/reference/流量加速器_结果 (47)_清洗版.csv
+!templates/reference/爆款率未达标流量加速器.csv
+!templates/reference/美发加仓库挑选顺序.csv
+!templates/reference/账单价格数据.xlsx
+!templates/reference/预览图更换表.csv
+!templates/reference/预览图更换表_副本.csv
