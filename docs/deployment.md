@@ -35,3 +35,9 @@
 原业务文件保持只读；Excel 从表头和保留的记录重新生成，公式按保存的结果值导出，不复制完整工作簿的缓存、隐藏数据和外链。CSV 使用 UTF-8 BOM。只选择已共享脚本实际使用的表格，放到该脚本的 templates 子目录并更新同目录 README。同步更新 templates/manifest.json 的文件 SHA-256、工作表与行数、适用脚本版本，并重建按脚本分目录的 ZIP。不要手动删掉指纹检查以绕过不一致。
 
 运行测试、构建和一致性检查后，核对独立样例与 ZIP 完全一致、每张表只有表头加最多 5 条记录。推送后匿名下载样例及 ZIP，与本地逐字节比较；数据完整性或真实业务运行不能由这些精简样例证明。
+
+## 首页模板直接下载
+
+首页模板链接使用 GitHub Release `template-samples` 的附件 URL，以附件下载响应保存 CSV/XLSX；不使用会展示 CSV 文本的 Raw 地址。源码模板仍在 `userscripts/<ID>/templates/`。Release 只放清单的 5 份模板和当前 ZIP，发布或更新模板时，先同步附件再更新首页，并匿名核对下载响应、清单中的附件名、字节和 SHA-256 一致。现有模板更新使用 `gh release upload template-samples <文件> --clobber`，不要增加未关联的表格。
+
+GitHub 会把纯中文附件名归一化为 default，导致多个 CSV 名称冲突。附件使用 manifest 的 downloadName（稳定 ASCII 名称），中文源文件名及首页显示不变；上传前按 downloadName 复制到忽略目录，不能用原中文文件名直接批量上传。ZIP 内保留中文模板名和按脚本分组的结构。

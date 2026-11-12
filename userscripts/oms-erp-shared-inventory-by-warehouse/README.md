@@ -8,7 +8,7 @@
 
 每份模板保留第 1 行表头和前 5 条数据，供参照填法；正式使用前请替换、补全自己的业务数据。原始业务表保持不变。
 
-- [美发加仓库挑选顺序.csv](https://raw.githubusercontent.com/lucasshare/team-script-hub/main/userscripts/oms-erp-shared-inventory-by-warehouse/templates/%E7%BE%8E%E5%8F%91%E5%8A%A0%E4%BB%93%E5%BA%93%E6%8C%91%E9%80%89%E9%A1%BA%E5%BA%8F.csv)
+- [美发加仓库挑选顺序.csv](https://github.com/lucasshare/team-script-hub/releases/download/template-samples/warehouse-priority.csv)
 
 ## 填写说明
 

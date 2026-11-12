@@ -8,7 +8,7 @@
 
 每份模板保留第 1 行表头和前 5 条数据，供参照填法；正式使用前请替换、补全自己的业务数据。原始业务表保持不变。
 
-- [skuid_sku货号映射.csv](https://raw.githubusercontent.com/lucasshare/team-script-hub/main/userscripts/temu-waybill-batch-download/templates/skuid_sku%E8%B4%A7%E5%8F%B7%E6%98%A0%E5%B0%84.csv)
+- [skuid_sku货号映射.csv](https://github.com/lucasshare/team-script-hub/releases/download/template-samples/sku-mapping.csv)
 
 ## 填写说明
 

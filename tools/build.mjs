@@ -3,7 +3,7 @@ import { resolve, sep, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { Script } from 'node:vm';
 import { createHash } from 'node:crypto';
-import { loadTemplates, urlPath } from './template-assets.mjs';
+import { loadTemplates, templateDownloadUrl } from './template-assets.mjs';
 
 export const projectRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -106,8 +106,8 @@ export function renderReadme(entries, base = DISTRIBUTION_BASE, templates) {
   const header = '| 平台 | 脚本名称 | 用途 | 使用注意 | 当前版本 | 安装链接 | 配套模板 |\n| --- | --- | --- | --- | --- | --- | --- |';
   const table = items => header + '\n' + items.map(entry => {
     const note = entry.workflow ? `面单第 ${entry.workflow.step} 步。${entry.notes ?? entry.usage}` : entry.notes ?? entry.usage;
-    const links = (entry.templateIds ?? []).map(id => templates.assets.get(id)).map(asset => `[${markdown(asset.name)}](${base}/${urlPath(asset.path)})`);
-    const templateCell = links.length ? links.join('<br>') + `<br>[模板与填写说明](userscripts/${entry.id}/README.md)` : markdown(entry.templateNote ?? '无需表格模板');
+    const links = (entry.templateIds ?? []).map(id => templates.assets.get(id)).map(asset => `[下载：${markdown(asset.name)}](${templateDownloadUrl(asset)})`);
+    const templateCell = links.length ? links.join('<br>') + `<br>[填写说明](userscripts/${entry.id}/README.md)` : markdown(entry.templateNote ?? '无需表格模板');
     return `| ${entry.platforms.map(markdown).join('、')} | ${markdown(entry.name)} | ${markdown(entry.description)} | ${markdown(note)} | v${entry.version} | [安装脚本](${base}/scripts/${entry.id}.user.js) | ${templateCell} |`;
   }).join('\n');
   const flow = entries.filter(item => item.workflow).sort((a, b) => a.workflow.step - b.workflow.step);
@@ -121,9 +121,9 @@ export function renderReadme(entries, base = DISTRIBUTION_BASE, templates) {
 
 ## 配套参考表
 
-[下载全部 ${templates.manifest.assets.length} 份参考表 ZIP](${base}/${urlPath(templates.manifest.bundle.path)}) · [按脚本查看模板与填写说明](templates/README.md)
+[下载全部 ${templates.manifest.assets.length} 份参考表 ZIP](${templateDownloadUrl(templates.manifest.bundle)}) · [按脚本查看模板与填写说明](templates/README.md)
 
-只提供已共享脚本对应的参考表，文件和填写说明放在各自的脚本目录下，ZIP 也按脚本分文件夹。每张表只保留表头和前 5 条数据，供查看格式和填法。使用前请替换为自己的完整业务数据，不能把精简样例直接当作完整配置表。CSV 若打开为文本，可下载 ZIP。
+直接点击下方对应脚本的“下载”链接即可保存模板，无需进入说明页。只提供已共享脚本对应的参考表，文件和填写说明放在各自的脚本目录下，ZIP 也按脚本分文件夹。每张表只保留表头和前 5 条数据，供查看格式和填法。使用前请替换为自己的完整业务数据，不能把精简样例直接当作完整配置表。
 
 ## 先安装油猴
 

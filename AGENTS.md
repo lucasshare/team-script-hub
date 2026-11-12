@@ -11,6 +11,7 @@
 - 所有发布内容按公开文件审查。不能包含认证信息、浏览器配置或油猴存储文件；业务数据默认不发布。仅允许已共享脚本实际对应的 5 份参考样例（2026-11-12 用户纠正范围），每张表只保留表头及前 5 条记录，范围由 `templates/manifest.json` 和 `.gitignore` 精确限定；不放开其他业务文件。
 - 参考样例及填写说明放在 `userscripts/<脚本ID>/templates/` 与该脚本目录的 README；ZIP 按脚本 ID 分文件夹，内容必须与独立文件一致；重新生成 Excel，禁止只隐藏或删除显示行却保留完整缓存、外链、隐藏表或批注。保留表头、文本 ID 和原值，公式使用保存的结果值；原业务文件只读，不覆盖。
 - `catalog.json` 的 templateIds 只能关联已核对实际导入规则及版本的参考表。样例仅供填写参照，不作为完整业务配置；禁止收录未关联已共享脚本的表格，不因源目录有其他表格而扩大发布范围。构建校验对应脚本目录、文件指纹、行数上限、合集内容及脚本版本关联。
+- 首页每项模板必须直接下载，不能用会展示 CSV 文本的 Raw 链接代替下载。使用 template-samples Release 附件，downloadName 为稳定、不重复的 ASCII 文件名（GitHub 会将纯中文附件名改为 default）；原中文名称保留在脚本目录和首页。发布先同步附件，并匿名核对 Content-Disposition 为 attachment、文件名和内容指纹，再推送对应链接。
 - 不添加前端密码、共享令牌等伪权限。首版发布权由 GitHub 控制，不承诺离职后能撤销已下载脚本。
 - 本项目现为公开 GitHub 分发仓库，使用 README 表格作为同事入口，不部署 Cloudflare 或独立网站。安装/更新文件固定为公开 `main/scripts/<ID>.user.js` / `.meta.js`，使用 raw.githubusercontent.com 地址。
 - 免登录分发依赖仓库保持 PUBLIC。出现 Raw 404 时，先查 GitHub 接口的实时 visibility 和文件存在性，不凭可能缓存的公开首页判断；私有内容接口的 download_url 可能含临时凭据，诊断只输出路径、SHA 和大小。

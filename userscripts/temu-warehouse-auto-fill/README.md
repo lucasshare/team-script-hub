@@ -8,8 +8,8 @@
 
 每份模板保留第 1 行表头和前 5 条数据，供参照填法；正式使用前请替换、补全自己的业务数据。原始业务表保持不变。
 
-- [仓库对照表.csv](https://raw.githubusercontent.com/lucasshare/team-script-hub/main/userscripts/temu-warehouse-auto-fill/templates/%E4%BB%93%E5%BA%93%E5%AF%B9%E7%85%A7%E8%A1%A8.csv)
-- [商品尺寸数据表.xlsx](https://raw.githubusercontent.com/lucasshare/team-script-hub/main/userscripts/temu-warehouse-auto-fill/templates/%E5%95%86%E5%93%81%E5%B0%BA%E5%AF%B8%E6%95%B0%E6%8D%AE%E8%A1%A8.xlsx)
+- [仓库对照表.csv](https://github.com/lucasshare/team-script-hub/releases/download/template-samples/warehouse-mapping.csv)
+- [商品尺寸数据表.xlsx](https://github.com/lucasshare/team-script-hub/releases/download/template-samples/product-dimensions.xlsx)
 
 ## 填写说明
 

@@ -58,6 +58,7 @@ export async function loadTemplates(root, entries) {
   if (manifest.sampleRows !== 5 || !Array.isArray(manifest.assets)) throw new Error('样例清单必须明确每张表最多 5 条数据。');
   const usedIds = new Set(entries.flatMap(entry => entry.templateIds ?? []));
   const assets = new Map();
+  const downloadNames = new Set();
   const content = new Map();
   async function verify(file, directory) {
     if (typeof file.path !== 'string' || !file.path.startsWith(directory + '/')) throw new Error('模板路径无效。');
@@ -71,6 +72,8 @@ export async function loadTemplates(root, entries) {
   }
   for (const asset of manifest.assets) {
     if (!/^[a-z0-9-]+$/.test(asset.id) || assets.has(asset.id) || !Array.isArray(asset.sheets) || !asset.sheets.length || asset.sheets.some(sheet => !Number.isInteger(sheet.dataRows) || sheet.dataRows < 0 || sheet.dataRows > 5 || !Array.isArray(sheet.headers))) throw new Error('模板标识或保留行数无效。');
+    if (!/^[a-z0-9][a-z0-9.-]*\.(?:csv|xlsx)$/.test(asset.downloadName) || downloadNames.has(asset.downloadName) || !asset.downloadName.endsWith('.' + asset.format.toLowerCase())) throw new Error('模板下载附件名无效或重复。');
+    downloadNames.add(asset.downloadName);
     if (!usedIds.has(asset.id)) throw new Error('不能发布未关联已共享脚本的模板：' + asset.name);
     const owner = entries.find(entry => (entry.templateIds ?? []).includes(asset.id));
     if (asset.path !== `userscripts/${owner.id}/templates/${asset.name}` || !/^[^/\\]+$/.test(asset.name)) throw new Error('模板必须放在对应脚本的 templates 子目录。');
@@ -110,4 +113,10 @@ export async function loadTemplates(root, entries) {
 
 export function urlPath(path) {
   return path.split('/').map(part => encodeURIComponent(part).replace(/[!'()*]/g, char => '%' + char.charCodeAt(0).toString(16).toUpperCase())).join('/');
+}
+
+export const TEMPLATE_DOWNLOAD_BASE = 'https://github.com/lucasshare/team-script-hub/releases/download/template-samples';
+
+export function templateDownloadUrl(file) {
+  return `${TEMPLATE_DOWNLOAD_BASE}/${urlPath(file.downloadName ?? file.name ?? file.path.split('/').at(-1))}`;
 }

@@ -3,8 +3,8 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { runInNewContext } from 'node:vm';
-import { loadTemplates, readZip, parseCsv, urlPath } from './template-assets.mjs';
-import { prepare, projectRoot, DISTRIBUTION_BASE } from './build.mjs';
+import { loadTemplates, readZip, parseCsv, templateDownloadUrl } from './template-assets.mjs';
+import { prepare, projectRoot } from './build.mjs';
 
 const catalog = JSON.parse(await readFile(resolve(projectRoot, 'catalog.json'), 'utf8'));
 const manifest = JSON.parse(await readFile(resolve(projectRoot, 'templates/manifest.json'), 'utf8'));
@@ -114,7 +114,7 @@ test('首页只关联已验证的五份输入表，所有样例都提供索引�
   for (const item of catalog) {
     for (const id of item.templateIds ?? []) {
       const sample = manifest.assets.find(asset => asset.id === id);
-      assert.ok(readme.includes(DISTRIBUTION_BASE + '/' + urlPath(sample.path)));
+      assert.ok(readme.includes(`[下载：${sample.name}](${templateDownloadUrl(sample)})`));
       assert.equal(sample.path, `userscripts/${item.id}/templates/${sample.name}`);
       const guide = await readFile(resolve(projectRoot, `userscripts/${item.id}/README.md`), 'utf8');
       assert.ok(guide.includes(sample.name));
