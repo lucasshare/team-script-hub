@@ -41,11 +41,12 @@ async function functions(scriptId, names, extra = {}) {
   return runInNewContext(code + '\n({' + names.join(',') + '})', { TextDecoder, ...extra });
 }
 
-test('仅发布用户目录的23份样例，每张表保留5条，并与ZIP内容一致', async () => {
+test('仅发布已共享脚本对应的5份模板，每张表保留5条，并与ZIP内容一致', async () => {
   const result = await loadTemplates(projectRoot, catalog);
-  assert.equal(result.assets.size, 23);
-  assert.equal(manifest.assets.filter(item => item.format === 'CSV').length, 16);
-  assert.equal(manifest.assets.filter(item => item.format === 'XLSX').length, 7);
+  assert.equal(result.assets.size, 5);
+  assert.equal(manifest.assets.filter(item => item.format === 'CSV').length, 4);
+  assert.equal(manifest.assets.filter(item => item.format === 'XLSX').length, 1);
+  assert.deepEqual([...result.assets.keys()].sort(), [...new Set(catalog.flatMap(item => item.templateIds ?? []))].sort());
   assert.ok(manifest.assets.every(item => item.sheets.every(sheet => sheet.dataRows === 5)));
 });
 
@@ -108,12 +109,21 @@ test('首页只关联已验证的五份输入表，所有样例都提供索引�
   const readme = files.get('README.md');
   assert.match(readme, /\| 配套模板 \|/);
   assert.match(readme, /每张表只保留表头和前 5 条数据/);
-  assert.match(readme, /下载全部 23 份参考表 ZIP/);
+  assert.match(readme, /下载全部 5 份参考表 ZIP/);
   assert.equal(catalog.flatMap(item => item.templateIds ?? []).length, 5);
   for (const item of catalog) {
     for (const id of item.templateIds ?? []) {
       const sample = manifest.assets.find(asset => asset.id === id);
       assert.ok(readme.includes(DISTRIBUTION_BASE + '/' + urlPath(sample.path)));
+      assert.equal(sample.path, `userscripts/${item.id}/templates/${sample.name}`);
+      const guide = await readFile(resolve(projectRoot, `userscripts/${item.id}/README.md`), 'utf8');
+      assert.ok(guide.includes(sample.name));
+      assert.ok(readme.includes(`userscripts/${item.id}/README.md`));
     }
   }
+});
+
+test('移除脚本的模板关联后，构建阻止继续发布其模板', async () => {
+  const entries = catalog.map(item => ({ ...item, templateIds: [] }));
+  await assert.rejects(loadTemplates(projectRoot, entries), /不能发布未关联已共享脚本的模板/);
 });

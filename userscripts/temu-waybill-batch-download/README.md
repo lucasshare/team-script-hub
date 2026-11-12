@@ -1,0 +1,23 @@
+# Temu 面单批量下载
+
+当前共享版本：v1.5.6。
+
+接收当前 OMS 批次，按所选店铺下载普通或补寄物流面单。
+
+## 配套模板
+
+每份模板保留第 1 行表头和前 5 条数据，供参照填法；正式使用前请替换、补全自己的业务数据。原始业务表保持不变。
+
+- [skuid_sku货号映射.csv](https://raw.githubusercontent.com/lucasshare/team-script-hub/main/userscripts/temu-waybill-batch-download/templates/skuid_sku%E8%B4%A7%E5%8F%B7%E6%98%A0%E5%B0%84.csv)
+
+## 填写说明
+
+### skuid_sku货号映射.csv
+
+适用版本：面单批量下载 1.5.6。导入到 SKU 映射入口。
+
+保留“SKU ID”和“SKU货号”两列，一行一组对应关系。SKU ID 应为完整的 TEMU 平台数字 ID，货号按文本保存；长 ID 不要变成科学计数法或让 Excel 改写末尾数字。同一 ID 不要填写不同货号，当前脚本会以后读到的值覆盖前面的值。
+
+此表用于面单文件命名，不代替采集器建立的本批订单任务。
+
+[返回共享首页](../../README.md) · [查看全部配套模板](../../templates/README.md)

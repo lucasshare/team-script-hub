@@ -56,11 +56,12 @@ export function parseCsv(text) {
 export async function loadTemplates(root, entries) {
   const manifest = JSON.parse(await readFile(resolve(root, 'templates/manifest.json'), 'utf8'));
   if (manifest.sampleRows !== 5 || !Array.isArray(manifest.assets)) throw new Error('样例清单必须明确每张表最多 5 条数据。');
-  const base = await realpath(resolve(root, 'templates'));
+  const usedIds = new Set(entries.flatMap(entry => entry.templateIds ?? []));
   const assets = new Map();
   const content = new Map();
-  async function verify(file) {
-    if (typeof file.path !== 'string' || !file.path.startsWith('templates/')) throw new Error('模板路径无效。');
+  async function verify(file, directory) {
+    if (typeof file.path !== 'string' || !file.path.startsWith(directory + '/')) throw new Error('模板路径无效。');
+    const base = await realpath(resolve(root, directory));
     const actual = await realpath(resolve(root, file.path));
     if (!actual.startsWith(base + sep)) throw new Error('模板路径越界。');
     const bytes = await readFile(actual);
@@ -70,7 +71,10 @@ export async function loadTemplates(root, entries) {
   }
   for (const asset of manifest.assets) {
     if (!/^[a-z0-9-]+$/.test(asset.id) || assets.has(asset.id) || !Array.isArray(asset.sheets) || !asset.sheets.length || asset.sheets.some(sheet => !Number.isInteger(sheet.dataRows) || sheet.dataRows < 0 || sheet.dataRows > 5 || !Array.isArray(sheet.headers))) throw new Error('模板标识或保留行数无效。');
-    const bytes = await verify(asset);
+    if (!usedIds.has(asset.id)) throw new Error('不能发布未关联已共享脚本的模板：' + asset.name);
+    const owner = entries.find(entry => (entry.templateIds ?? []).includes(asset.id));
+    if (asset.path !== `userscripts/${owner.id}/templates/${asset.name}` || !/^[^/\\]+$/.test(asset.name)) throw new Error('模板必须放在对应脚本的 templates 子目录。');
+    const bytes = await verify(asset, `userscripts/${owner.id}/templates`);
     if (asset.format === 'CSV') {
       if (!bytes.subarray(0, 3).equals(Buffer.from([239, 187, 191]))) throw new Error('CSV 必须使用 UTF-8 BOM。');
       const rows = parseCsv(bytes.toString('utf8'));
@@ -87,11 +91,12 @@ export async function loadTemplates(root, entries) {
     } else throw new Error('不支持的模板格式。');
     assets.set(asset.id, asset);
   }
-  const bundle = await verify(manifest.bundle);
+  const bundle = await verify(manifest.bundle, 'templates');
   const members = readZip(bundle);
   if (members.size !== assets.size) throw new Error('样例合集文件数量不一致。');
   for (const asset of assets.values()) {
-    const bytes = members.get(asset.name);
+    const owner = entries.find(entry => (entry.templateIds ?? []).includes(asset.id));
+    const bytes = members.get(`${owner.id}/${asset.name}`);
     if (!bytes || !bytes.equals(content.get(asset.path))) throw new Error('ZIP 不是当前已审查的精简样例：' + asset.name);
   }
   for (const entry of entries) {

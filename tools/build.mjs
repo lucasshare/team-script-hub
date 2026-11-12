@@ -107,7 +107,7 @@ export function renderReadme(entries, base = DISTRIBUTION_BASE, templates) {
   const table = items => header + '\n' + items.map(entry => {
     const note = entry.workflow ? `面单第 ${entry.workflow.step} 步。${entry.notes ?? entry.usage}` : entry.notes ?? entry.usage;
     const links = (entry.templateIds ?? []).map(id => templates.assets.get(id)).map(asset => `[${markdown(asset.name)}](${base}/${urlPath(asset.path)})`);
-    const templateCell = links.length ? links.join('<br>') + '<br>[填写说明](templates/filling-guide.md)' : markdown(entry.templateNote ?? '无需表格模板');
+    const templateCell = links.length ? links.join('<br>') + `<br>[模板与填写说明](userscripts/${entry.id}/README.md)` : markdown(entry.templateNote ?? '无需表格模板');
     return `| ${entry.platforms.map(markdown).join('、')} | ${markdown(entry.name)} | ${markdown(entry.description)} | ${markdown(note)} | v${entry.version} | [安装脚本](${base}/scripts/${entry.id}.user.js) | ${templateCell} |`;
   }).join('\n');
   const flow = entries.filter(item => item.workflow).sort((a, b) => a.workflow.step - b.workflow.step);
@@ -121,9 +121,9 @@ export function renderReadme(entries, base = DISTRIBUTION_BASE, templates) {
 
 ## 配套参考表
 
-[下载全部 ${templates.manifest.assets.length} 份参考表 ZIP](${base}/${urlPath(templates.manifest.bundle.path)}) · [查看参考表目录](templates/README.md) · [填写说明](templates/filling-guide.md)
+[下载全部 ${templates.manifest.assets.length} 份参考表 ZIP](${base}/${urlPath(templates.manifest.bundle.path)}) · [按脚本查看模板与填写说明](templates/README.md)
 
-参考表来自现用文件，每张表只保留表头和前 5 条数据，供查看格式和填法。使用前请替换为自己的完整业务数据，不能把精简样例直接当作完整配置表。CSV 若打开为文本，可下载 ZIP。
+只提供已共享脚本对应的参考表，文件和填写说明放在各自的脚本目录下，ZIP 也按脚本分文件夹。每张表只保留表头和前 5 条数据，供查看格式和填法。使用前请替换为自己的完整业务数据，不能把精简样例直接当作完整配置表。CSV 若打开为文本，可下载 ZIP。
 
 ## 先安装油猴
 
