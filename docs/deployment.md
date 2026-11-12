@@ -1,6 +1,6 @@
 # GitHub 分发与更新
 
-团队入口为 [team-script-hub 仓库首页](https://github.com/lucasshare/team-script-hub)。按用户最新决定，这个仓库用于公开分发，不部署 Cloudflare Pages 或独立网站；原业务开发源码仓库不改变可见性。
+团队入口为 [team-script-hub 仓库首页](https://github.com/lucasshare/team-script-hub)。这个仓库用于公开分发；2026-11-12 用户允许增加 GitHub Pages 下载辅助页以保留中文文件名，不部署 Cloudflare Pages 或另建团队门户；原业务开发源码仓库不改变可见性。
 
 ## 文件关系
 
@@ -36,8 +36,10 @@
 
 运行测试、构建和一致性检查后，核对独立样例与 ZIP 完全一致、每张表只有表头加最多 5 条记录。推送后匿名下载样例及 ZIP，与本地逐字节比较；数据完整性或真实业务运行不能由这些精简样例证明。
 
-## 首页模板直接下载
+## 首页模板直接下载与中文名
 
-首页模板链接使用 GitHub Release `template-samples` 的附件 URL，以附件下载响应保存 CSV/XLSX；不使用会展示 CSV 文本的 Raw 地址。源码模板仍在 `userscripts/<ID>/templates/`。Release 只放清单的 5 份模板和当前 ZIP，发布或更新模板时，先同步附件再更新首页，并匿名核对下载响应、清单中的附件名、字节和 SHA-256 一致。现有模板更新使用 `gh release upload template-samples <文件> --clobber`，不要增加未关联的表格。
+首页链接使用 `https://lucasshare.github.io/team-script-hub/?id=<模板ID>`，ZIP 使用 `id=all-templates`。中文原文件仍在对应脚本的 templates 目录；下载页和实际文件同源打包。页面先核对 SHA-256，再用 Blob 和原中文 downloadName 发起保存。浏览器阻止自动下载时可点击页面中的按钮，不能假定页面能知道文件是否已保存到用户电脑。
 
-GitHub 会把纯中文附件名归一化为 default，导致多个 CSV 名称冲突。附件使用 manifest 的 downloadName（稳定 ASCII 名称），中文源文件名及首页显示不变；上传前按 downloadName 复制到忽略目录，不能用原中文文件名直接批量上传。ZIP 内保留中文模板名和按脚本分组的结构。
+`downloads/index.html` 是页面源码，`tools/build-downloads.mjs` 从 templates/manifest.json 构建 `dist/downloads`。运行 `npm run build` 会同时生成脚本分发和下载包；`npm run build:downloads` 只构建后者。包内只有 8 个文件：页面、.nojekyll、5 份模板、1 份 ZIP；不发布其他表格、源脚本或业务数据。
+
+GitHub Pages 从 gh-pages 分支根目录发布，main 保留源码与原脚本目录，两个分支独立历史。更新时先在独立工作树同步当前下载包到 gh-pages 并推送；通过 GitHub Pages API 确认部署提交、核对 8 个部署文件及 7 个可访问资源的字节，并检查浏览器下载命名后，再推送 main 的首页入口。无需新增 workflow 授权或 Cloudflare 账号。旧 template-samples Release 保留作历史资料，当前首页不再链接其英文附件。

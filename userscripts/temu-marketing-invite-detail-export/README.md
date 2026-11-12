@@ -8,7 +8,7 @@
 
 每份模板保留第 1 行表头和前 5 条数据，供参照填法；正式使用前请替换、补全自己的业务数据。原始业务表保持不变。
 
-- [批量退活动.csv](https://github.com/lucasshare/team-script-hub/releases/download/template-samples/activity-cancel.csv)
+- [批量退活动.csv](https://lucasshare.github.io/team-script-hub/?id=sample-d136489da081)
 
 ## 填写说明
 

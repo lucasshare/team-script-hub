@@ -21,7 +21,7 @@
         "temu-waybill-batch-download": "1.5.6"
       },
       "sha256": "c6ca84d8d5ec11f71249892bceb8f83222251e89ce3d54503e7caea7a6c2cb45",
-      "downloadName": "sku-mapping.csv"
+      "downloadName": "skuid_sku货号映射.csv"
     },
     {
       "id": "sample-76d603b55eeb",
@@ -45,7 +45,7 @@
         "temu-warehouse-auto-fill": "3.20"
       },
       "sha256": "1488985aacf62788505afe983305dab492089024ae151834c1b704ca8b8161fd",
-      "downloadName": "warehouse-mapping.csv"
+      "downloadName": "仓库对照表.csv"
     },
     {
       "id": "sample-049849a6fc3b",
@@ -70,7 +70,7 @@
         "temu-warehouse-auto-fill": "3.20"
       },
       "sha256": "821574ab2f3d6351594a5e9ca4d3188cfa9d350f2eee7d62342557a35b317e24",
-      "downloadName": "product-dimensions.xlsx"
+      "downloadName": "商品尺寸数据表.xlsx"
     },
     {
       "id": "sample-d136489da081",
@@ -101,7 +101,7 @@
         "temu-marketing-invite-detail-export": "0.1.23"
       },
       "sha256": "ed0fa704b657f860bfdcf6c7f4b1103df6dcd0d2c239cda8f03d3585a266301e",
-      "downloadName": "activity-cancel.csv"
+      "downloadName": "批量退活动.csv"
     },
     {
       "id": "sample-5a384c8f232a",
@@ -125,11 +125,13 @@
         "oms-erp-shared-inventory-by-warehouse": "1.1.0"
       },
       "sha256": "f8e9e22d07c7efe5cc173eb40c61b5de4eee453cfe10a63bcc6a5fc218c31f02",
-      "downloadName": "warehouse-priority.csv"
+      "downloadName": "美发加仓库挑选顺序.csv"
     }
   ],
   "bundle": {
     "path": "templates/reference-samples.zip",
-    "sha256": "b9e9459f33ef8c6f962b0ac38a937031b668db63f563bac697ae3a130e52ba66"
+    "sha256": "b9e9459f33ef8c6f962b0ac38a937031b668db63f563bac697ae3a130e52ba66",
+    "id": "all-templates",
+    "downloadName": "团队共享脚本配套模板.zip"
   }
 }

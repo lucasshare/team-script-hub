@@ -72,7 +72,7 @@ export async function loadTemplates(root, entries) {
   }
   for (const asset of manifest.assets) {
     if (!/^[a-z0-9-]+$/.test(asset.id) || assets.has(asset.id) || !Array.isArray(asset.sheets) || !asset.sheets.length || asset.sheets.some(sheet => !Number.isInteger(sheet.dataRows) || sheet.dataRows < 0 || sheet.dataRows > 5 || !Array.isArray(sheet.headers))) throw new Error('模板标识或保留行数无效。');
-    if (!/^[a-z0-9][a-z0-9.-]*\.(?:csv|xlsx)$/.test(asset.downloadName) || downloadNames.has(asset.downloadName) || !asset.downloadName.endsWith('.' + asset.format.toLowerCase())) throw new Error('模板下载附件名无效或重复。');
+    if (asset.downloadName !== asset.name || downloadNames.has(asset.downloadName)) throw new Error('模板下载名必须保留原中文文件名且不能重复。');
     downloadNames.add(asset.downloadName);
     if (!usedIds.has(asset.id)) throw new Error('不能发布未关联已共享脚本的模板：' + asset.name);
     const owner = entries.find(entry => (entry.templateIds ?? []).includes(asset.id));
@@ -95,6 +95,7 @@ export async function loadTemplates(root, entries) {
     assets.set(asset.id, asset);
   }
   const bundle = await verify(manifest.bundle, 'templates');
+  if (manifest.bundle.id !== 'all-templates' || manifest.bundle.downloadName !== '团队共享脚本配套模板.zip') throw new Error('模板合集必须使用约定的中文下载名。');
   const members = readZip(bundle);
   if (members.size !== assets.size) throw new Error('样例合集文件数量不一致。');
   for (const asset of assets.values()) {
@@ -115,8 +116,8 @@ export function urlPath(path) {
   return path.split('/').map(part => encodeURIComponent(part).replace(/[!'()*]/g, char => '%' + char.charCodeAt(0).toString(16).toUpperCase())).join('/');
 }
 
-export const TEMPLATE_DOWNLOAD_BASE = 'https://github.com/lucasshare/team-script-hub/releases/download/template-samples';
+export const TEMPLATE_DOWNLOAD_BASE = 'https://lucasshare.github.io/team-script-hub/';
 
 export function templateDownloadUrl(file) {
-  return `${TEMPLATE_DOWNLOAD_BASE}/${urlPath(file.downloadName ?? file.name ?? file.path.split('/').at(-1))}`;
+  return `${TEMPLATE_DOWNLOAD_BASE}?id=${encodeURIComponent(file.id)}`;
 }

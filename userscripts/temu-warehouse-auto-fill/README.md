@@ -8,8 +8,8 @@
 
 每份模板保留第 1 行表头和前 5 条数据，供参照填法；正式使用前请替换、补全自己的业务数据。原始业务表保持不变。
 
-- [仓库对照表.csv](https://github.com/lucasshare/team-script-hub/releases/download/template-samples/warehouse-mapping.csv)
-- [商品尺寸数据表.xlsx](https://github.com/lucasshare/team-script-hub/releases/download/template-samples/product-dimensions.xlsx)
+- [仓库对照表.csv](https://lucasshare.github.io/team-script-hub/?id=sample-76d603b55eeb)
+- [商品尺寸数据表.xlsx](https://lucasshare.github.io/team-script-hub/?id=sample-049849a6fc3b)
 
 ## 填写说明
 

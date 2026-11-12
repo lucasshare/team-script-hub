@@ -6,9 +6,9 @@
 
 ## 配套参考表
 
-[下载全部 5 份参考表 ZIP](https://github.com/lucasshare/team-script-hub/releases/download/template-samples/reference-samples.zip) · [按脚本查看模板与填写说明](templates/README.md)
+[下载全部 5 份参考表 ZIP](https://lucasshare.github.io/team-script-hub/?id=all-templates) · [按脚本查看模板与填写说明](templates/README.md)
 
-直接点击下方对应脚本的“下载”链接即可保存模板，无需进入说明页。只提供已共享脚本对应的参考表，文件和填写说明放在各自的脚本目录下，ZIP 也按脚本分文件夹。每张表只保留表头和前 5 条数据，供查看格式和填法。使用前请替换为自己的完整业务数据，不能把精简样例直接当作完整配置表。
+点击下方对应脚本的“下载”链接，会短暂打开辅助页并按原中文文件名保存；若浏览器未自动开始，请点击该页的下载按钮。填写说明单独提供。只提供已共享脚本对应的参考表，文件和填写说明放在各自的脚本目录下，ZIP 也按脚本分文件夹。每张表只保留表头和前 5 条数据，供查看格式和填法。使用前请替换为自己的完整业务数据，不能把精简样例直接当作完整配置表。
 
 ## 先安装油猴
 
@@ -20,10 +20,10 @@
 
 | 平台 | 脚本名称 | 用途 | 使用注意 | 当前版本 | 安装链接 | 配套模板 |
 | --- | --- | --- | --- | --- | --- | --- |
-| OMS | OMS ERP 共享库存按仓库明细查询 | 按自定义 SKU 查询各仓库存，依据仓库优先级和库存阈值生成推荐仓库。 | 面单第 1 步。先导入仓库优先级 CSV；与采集器使用同一浏览器配置。 | v1.1.0 | [安装脚本](https://raw.githubusercontent.com/lucasshare/team-script-hub/main/scripts/oms-erp-shared-inventory-by-warehouse.user.js) | [下载：美发加仓库挑选顺序.csv](https://github.com/lucasshare/team-script-hub/releases/download/template-samples/warehouse-priority.csv)<br>[填写说明](userscripts/oms-erp-shared-inventory-by-warehouse/README.md) |
+| OMS | OMS ERP 共享库存按仓库明细查询 | 按自定义 SKU 查询各仓库存，依据仓库优先级和库存阈值生成推荐仓库。 | 面单第 1 步。先导入仓库优先级 CSV；与采集器使用同一浏览器配置。 | v1.1.0 | [安装脚本](https://raw.githubusercontent.com/lucasshare/team-script-hub/main/scripts/oms-erp-shared-inventory-by-warehouse.user.js) | [下载：美发加仓库挑选顺序.csv](https://lucasshare.github.io/team-script-hub/?id=sample-5a384c8f232a)<br>[填写说明](userscripts/oms-erp-shared-inventory-by-warehouse/README.md) |
 | OMS | 致远ERP 订单采集器 | 采集当前订单、填充面板中的空仓库，并把选中订单设为本批 TEMU 任务。 | 面单第 2 步。核对订单和仓库后建立本批任务；数据变化后重新建立。 | v2.8 | [安装脚本](https://raw.githubusercontent.com/lucasshare/team-script-hub/main/scripts/zhiyuan-erp-order-collector.user.js) | 复用库存查询映射，无独立表格模板 |
-| OMS、TEMU | Temu 仓库自动填充 | 接收 OMS 批次，查询对应订单，并在普通下单或补发货页面填写尺寸与仓库。 | 面单第 3 步。需商品尺寸表；签名、渠道和最终下单由人工处理。 | v3.20 | [安装脚本](https://raw.githubusercontent.com/lucasshare/team-script-hub/main/scripts/temu-warehouse-auto-fill.user.js) | [下载：仓库对照表.csv](https://github.com/lucasshare/team-script-hub/releases/download/template-samples/warehouse-mapping.csv)<br>[下载：商品尺寸数据表.xlsx](https://github.com/lucasshare/team-script-hub/releases/download/template-samples/product-dimensions.xlsx)<br>[填写说明](userscripts/temu-warehouse-auto-fill/README.md) |
-| OMS、TEMU | Temu 面单批量下载 | 接收当前 OMS 批次，按所选店铺下载普通或补寄物流面单。 | 面单第 4 步。先建立本批任务；普通与补寄面单使用各自页面。 | v1.5.6 | [安装脚本](https://raw.githubusercontent.com/lucasshare/team-script-hub/main/scripts/temu-waybill-batch-download.user.js) | [下载：skuid_sku货号映射.csv](https://github.com/lucasshare/team-script-hub/releases/download/template-samples/sku-mapping.csv)<br>[填写说明](userscripts/temu-waybill-batch-download/README.md) |
+| OMS、TEMU | Temu 仓库自动填充 | 接收 OMS 批次，查询对应订单，并在普通下单或补发货页面填写尺寸与仓库。 | 面单第 3 步。需商品尺寸表；签名、渠道和最终下单由人工处理。 | v3.20 | [安装脚本](https://raw.githubusercontent.com/lucasshare/team-script-hub/main/scripts/temu-warehouse-auto-fill.user.js) | [下载：仓库对照表.csv](https://lucasshare.github.io/team-script-hub/?id=sample-76d603b55eeb)<br>[下载：商品尺寸数据表.xlsx](https://lucasshare.github.io/team-script-hub/?id=sample-049849a6fc3b)<br>[填写说明](userscripts/temu-warehouse-auto-fill/README.md) |
+| OMS、TEMU | Temu 面单批量下载 | 接收当前 OMS 批次，按所选店铺下载普通或补寄物流面单。 | 面单第 4 步。先建立本批任务；普通与补寄面单使用各自页面。 | v1.5.6 | [安装脚本](https://raw.githubusercontent.com/lucasshare/team-script-hub/main/scripts/temu-waybill-batch-download.user.js) | [下载：skuid_sku货号映射.csv](https://lucasshare.github.io/team-script-hub/?id=sample-55b499b82ba8)<br>[填写说明](userscripts/temu-waybill-batch-download/README.md) |
 | OMS | OMS ERP面单一键批量删除 | 预览订单关联附件，按明确选择逐项删除并回读结果。 | 面单第 5 步。仅在确需替换旧面单时使用；先核对附件预览。 | v1.8 | [安装脚本](https://raw.githubusercontent.com/lucasshare/team-script-hub/main/scripts/oms-erp-waybill-bulk-delete.user.js) | 无需表格模板 |
 | OMS | ZhiyuanSys ERP · 订单附件批量自动上传 | 按平台订单号、渠道 SKU 和跟踪号精确匹配本地 PDF，批量上传订单面单。 | 面单第 6 步。先核对 PDF 文件名和预扫匹配，再执行上传。 | v0.2.6 | [安装脚本](https://raw.githubusercontent.com/lucasshare/team-script-hub/main/scripts/zhiyuansys-erp-order-attachment-upload.user.js) | 使用面单 PDF，无表格模板 |
 
@@ -36,7 +36,7 @@
 | TEMU | Temu 调价单一键拒绝助手 | 按当前账号选择的店铺批量拒绝待卖家确认的调价单。 | 先选择店铺并核对待确认调价单，再执行拒绝。 | v0.1.1 | [安装脚本](https://raw.githubusercontent.com/lucasshare/team-script-hub/main/scripts/temu-price-adjust-reject.user.js) | 无需表格模板 |
 | 致远 BI | 致远BI TEMU利润率价格导出 | 保留 BI 售价参考页的全部字段，并按所选利润率范围导出价格表。 | 需登录 BI 并有报表权限；先设置利润率范围。 | v0.1.1 | [安装脚本](https://raw.githubusercontent.com/lucasshare/team-script-hub/main/scripts/bi-temu-profit-price-export.user.js) | 无需表格模板 |
 | 产品中心、OMS、商品运营工作台 | 致远ERP同步到TEMU Copilot自建版 | 同步或导出 ERP 销量月报，并向自建工作台补充 SHEIN 负责人。 | 需能访问原自建工作台；本项为自建版。 | v0.3.5 | [安装脚本](https://raw.githubusercontent.com/lucasshare/team-script-hub/main/scripts/erp-sales-sync-selfhost.user.js) | 无需表格模板 |
-| TEMU | Temu 活动采集与精确退出 | 采集活动列表、邀约、报名明细，并按 CSV 精确核对或退出指定活动。 | 先选择店铺、活动和站点；精确退出默认试跑。 | v0.1.23 | [安装脚本](https://raw.githubusercontent.com/lucasshare/team-script-hub/main/scripts/temu-marketing-invite-detail-export.user.js) | [下载：批量退活动.csv](https://github.com/lucasshare/team-script-hub/releases/download/template-samples/activity-cancel.csv)<br>[填写说明](userscripts/temu-marketing-invite-detail-export/README.md) |
+| TEMU | Temu 活动采集与精确退出 | 采集活动列表、邀约、报名明细，并按 CSV 精确核对或退出指定活动。 | 先选择店铺、活动和站点；精确退出默认试跑。 | v0.1.23 | [安装脚本](https://raw.githubusercontent.com/lucasshare/team-script-hub/main/scripts/temu-marketing-invite-detail-export.user.js) | [下载：批量退活动.csv](https://lucasshare.github.io/team-script-hub/?id=sample-d136489da081)<br>[填写说明](userscripts/temu-marketing-invite-detail-export/README.md) |
 
 ## 安装验证
 

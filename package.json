@@ -8,7 +8,8 @@
   },
   "scripts": {
     "test": "node --test",
-    "build": "node tools/build.mjs",
+    "build": "node tools/build.mjs && node tools/build-downloads.mjs",
+    "build:downloads": "node tools/build-downloads.mjs",
     "check": "node tools/build.mjs --check",
     "build:local": "node tools/build.mjs --check"
   }
