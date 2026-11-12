@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <title>模板下载 · 团队共享脚本中心</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 56px 20px; background: #f5f7fb; color: #24344c; font: 16px/1.65 system-ui, sans-serif; }
+    main { max-width: 560px; margin: auto; padding: 32px; border: 1px solid #dce4ef; border-radius: 16px; background: white; }
+    h1 { margin: 0 0 12px; font-size: 24px; }
+    #name { overflow-wrap: anywhere; font-weight: 600; }
+    button { padding: 12px 20px; border: 0; border-radius: 8px; background: #1769e0; color: white; cursor: pointer; font: inherit; }
+    button:focus-visible, a:focus-visible { outline: 3px solid #91b8f4; outline-offset: 3px; }
+    [hidden] { display: none; }
+    #error { color: #b42318; }
+    footer { margin-top: 24px; font-size: 14px; }
+    a { color: #1769e0; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>模板下载</h1>
+    <p id="name"></p>
+    <p id="status" role="status">正在准备文件…</p>
+    <button id="save" type="button" hidden>下载模板</button>
+    <p id="error" role="alert"></p>
+    <footer><a href="https://github.com/lucasshare/team-script-hub">返回团队共享脚本首页</a></footer>
+  </main>
+  <script type="module">
+    const files = {"sample-55b499b82ba8":{"name":"skuid_sku货号映射.csv","path":"files/temu-waybill-batch-download/skuid_sku%E8%B4%A7%E5%8F%B7%E6%98%A0%E5%B0%84.csv","sha256":"c6ca84d8d5ec11f71249892bceb8f83222251e89ce3d54503e7caea7a6c2cb45"},"sample-76d603b55eeb":{"name":"仓库对照表.csv","path":"files/temu-warehouse-auto-fill/%E4%BB%93%E5%BA%93%E5%AF%B9%E7%85%A7%E8%A1%A8.csv","sha256":"1488985aacf62788505afe983305dab492089024ae151834c1b704ca8b8161fd"},"sample-049849a6fc3b":{"name":"商品尺寸数据表.xlsx","path":"files/temu-warehouse-auto-fill/%E5%95%86%E5%93%81%E5%B0%BA%E5%AF%B8%E6%95%B0%E6%8D%AE%E8%A1%A8.xlsx","sha256":"821574ab2f3d6351594a5e9ca4d3188cfa9d350f2eee7d62342557a35b317e24"},"sample-d136489da081":{"name":"批量退活动.csv","path":"files/temu-marketing-invite-detail-export/%E6%89%B9%E9%87%8F%E9%80%80%E6%B4%BB%E5%8A%A8.csv","sha256":"ed0fa704b657f860bfdcf6c7f4b1103df6dcd0d2c239cda8f03d3585a266301e"},"sample-5a384c8f232a":{"name":"美发加仓库挑选顺序.csv","path":"files/oms-erp-shared-inventory-by-warehouse/%E7%BE%8E%E5%8F%91%E5%8A%A0%E4%BB%93%E5%BA%93%E6%8C%91%E9%80%89%E9%A1%BA%E5%BA%8F.csv","sha256":"f8e9e22d07c7efe5cc173eb40c61b5de4eee453cfe10a63bcc6a5fc218c31f02"},"all-templates":{"name":"团队共享脚本配套模板.zip","path":"files/bundle/%E5%9B%A2%E9%98%9F%E5%85%B1%E4%BA%AB%E8%84%9A%E6%9C%AC%E9%85%8D%E5%A5%97%E6%A8%A1%E6%9D%BF.zip","sha256":"b9e9459f33ef8c6f962b0ac38a937031b668db63f563bac697ae3a130e52ba66"}};
+    const id = new URLSearchParams(location.search).get('id');
+    const file = Object.hasOwn(files, id) ? files[id] : null;
+    const status = document.querySelector('#status');
+    const save = document.querySelector('#save');
+    try {
+      if (!file) throw new Error('请从共享脚本首页点击对应模板的下载链接。');
+      document.querySelector('#name').textContent = file.name;
+      const response = await fetch(file.path, { cache: 'no-store' });
+      if (!response.ok) throw new Error('文件暂时无法读取，请刷新页面重试。');
+      const bytes = await response.arrayBuffer();
+      const digest = await crypto.subtle.digest('SHA-256', bytes);
+      const hash = Array.from(new Uint8Array(digest), value => value.toString(16).padStart(2, '0')).join('');
+      if (hash !== file.sha256) throw new Error('文件正在更新，请稍后刷新页面重试。');
+      const url = URL.createObjectURL(new Blob([bytes], { type: 'application/octet-stream' }));
+      const download = () => {
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = file.name;
+        document.body.append(link);
+        link.click();
+        link.remove();
+        status.textContent = '已发起下载。如果浏览器未开始保存，请点击下方按钮。';
+      };
+      save.textContent = '下载：' + file.name;
+      save.hidden = false;
+      save.addEventListener('click', download);
+      download();
+      addEventListener('pagehide', () => URL.revokeObjectURL(url), { once: true });
+    } catch (error) {
+      status.textContent = '下载未完成';
+      document.querySelector('#error').textContent = error.message;
+    }
+  </script>
+</body>
+</html>
